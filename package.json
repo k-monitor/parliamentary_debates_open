@@ -1,0 +1,28 @@
+{
+  "name": "parldata_frontend",
+  "version": "1.0.0",
+  "description": "This repository is for the frontend development of the parldata project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-monitor/parldata_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-monitor/parldata_frontend/issues"
+  },
+  "homepage": "https://github.com/k-monitor/parldata_frontend#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
