@@ -32,6 +32,7 @@ exports[`renders correctly 1`] = `
           onChange={[Function]}
           type={undefined}
         />
+        <ul />
       </div>
       <div
         className="col-sm-9"

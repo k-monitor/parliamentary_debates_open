@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ul>
+  <li>
+    John Doe
+  </li>
+  <li>
+    Random Name
+  </li>
+</ul>
+`;

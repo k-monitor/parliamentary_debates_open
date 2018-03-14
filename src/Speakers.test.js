@@ -1,0 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Speakers from './Speakers';
+import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux'
+import store, { history } from './store'
+import { ConnectedRouter } from 'react-router-redux'
+
+
+it('renders correctly', () => {
+  const tree = renderer
+    .create(<Speakers speakers={["John Doe", "Random Name"]} />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+})
