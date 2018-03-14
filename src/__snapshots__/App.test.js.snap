@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <h1>
+      parldata-frontend
+    </h1>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-3"
+    >
+      <h2>
+        Search
+      </h2>
+      <input
+        className="form-control"
+        id={undefined}
+        type={undefined}
+      />
+    </div>
+    <div
+      className="col-sm-9"
+    >
+      <h2>
+        Keresés eredménye
+      </h2>
+    </div>
+  </div>
+</div>
+`;
