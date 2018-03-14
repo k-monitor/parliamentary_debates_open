@@ -39,7 +39,6 @@ exports[`renders correctly 1`] = `
         <h2>
           Keresés eredménye
         </h2>
-        <p />
       </div>
     </div>
   </div>

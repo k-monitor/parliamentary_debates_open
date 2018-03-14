@@ -1,18 +1,19 @@
 import React from 'react';
 import { Row, Col, FormControl } from 'react-bootstrap';
-import {search} from './store/modules/search'
+import {update_search} from './store/modules/search'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Results from './Results.js'
 
 const Home = props => (
   <Row>
     <Col sm={3}>
       <h2>Search</h2>
-      <FormControl onChange={event => props.search(event.target.value)} />
+      <FormControl onChange={event => props.update_search(event.target.value)} />
     </Col>
     <Col sm={9}>
       <h2>Keresés eredménye</h2>
-      <p>{props.search.results}</p>
+      <Results results={props.search.results.hits} />
     </Col>
   </Row>
 )
@@ -22,7 +23,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  search,
+  update_search,
 }, dispatch)
 
 export default connect(

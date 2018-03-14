@@ -4,7 +4,12 @@ export const SEARCH_TERM = 'seach/SEARCH_TERM'
 export const SEARCH_SUCCESS = 'seach/SEARCH_SUCCESS'
 
 const initialState = {
-  term: ''
+  term: '',
+  results: {
+    hits: {
+      hits: []
+    }
+  }
 }
 
 export default (state = initialState, action) => {
@@ -26,7 +31,7 @@ export default (state = initialState, action) => {
   }
 }
 
-export const search = (term) => {
+export const update_search = (term) => {
   return dispatch => {
     dispatch({
       type: SEARCH_TERM, term

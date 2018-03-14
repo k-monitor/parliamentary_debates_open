@@ -1,4 +1,4 @@
-import { search, SEARCH_TERM, SEARCH_SUCCESS } from './search'
+import { update_search, SEARCH_TERM, SEARCH_SUCCESS } from './search'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import config from '../../config.json'
@@ -23,7 +23,7 @@ it('changes current search term', () => {
   window.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve(mockResponse(200, null, '{"whatever": 42}')));
 
-  return store.dispatch(search(term))
+  return store.dispatch(update_search(term))
     .then(() => {
       const actions = store.getActions();
       expect(actions).toContainEqual({type: SEARCH_TERM, term });
@@ -36,7 +36,7 @@ it('calls API and dispatches success action', () => {
   window.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve(mockResponse(200, null, '{"whatever": 42}')));
 
-  return store.dispatch(search(term))
+  return store.dispatch(update_search(term))
     .then(() => {
       expect(window.fetch).toBeCalledWith(`${config.SEARCH_API}?q=${term}`)
       const actions = store.getActions();
