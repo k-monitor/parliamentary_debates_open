@@ -29,6 +29,7 @@ exports[`renders correctly 1`] = `
         <input
           className="form-control"
           id={undefined}
+          onChange={[Function]}
           type={undefined}
         />
       </div>
@@ -38,6 +39,7 @@ exports[`renders correctly 1`] = `
         <h2>
           Keresés eredménye
         </h2>
+        <p />
       </div>
     </div>
   </div>

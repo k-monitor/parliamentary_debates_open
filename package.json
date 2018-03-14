@@ -22,7 +22,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "redux-mock-store": "^1.5.1"
   },
   "config": {
     "commitizen": {
