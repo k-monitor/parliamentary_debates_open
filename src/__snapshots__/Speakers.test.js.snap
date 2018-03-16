@@ -3,10 +3,40 @@
 exports[`renders correctly 1`] = `
 <ul>
   <li>
-    John Doe
+    <div
+      className="checkbox"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={true}
+          disabled={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        John Doe
+      </label>
+    </div>
   </li>
   <li>
-    Random Name
+    <div
+      className="checkbox"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={false}
+          disabled={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Random Name
+      </label>
+    </div>
   </li>
 </ul>
 `;

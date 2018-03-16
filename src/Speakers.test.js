@@ -9,7 +9,7 @@ import { ConnectedRouter } from 'react-router-redux'
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Speakers speakers={["John Doe", "Random Name"]} />)
+    .create(<Speakers speakers={{"John Doe": true, "Random Name": false}} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 })

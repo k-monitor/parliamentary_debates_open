@@ -26,20 +26,31 @@ exports[`renders correctly 1`] = `
         <h2>
           Search
         </h2>
+        <h3>
+          Keyword
+        </h3>
         <input
           className="form-control"
           id={undefined}
           onChange={[Function]}
           type={undefined}
         />
+        <h3>
+          Speakers
+        </h3>
         <ul />
       </div>
       <div
         className="col-sm-9"
       >
-        <h2>
-          Keresés eredménye
-        </h2>
+        <div>
+          <h2>
+            0
+             találat:
+          </h2>
+          ,
+          <div />
+        </div>
       </div>
     </div>
   </div>

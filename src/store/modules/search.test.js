@@ -43,3 +43,4 @@ it('calls API and dispatches success action', () => {
       expect(actions).toContainEqual({type: SEARCH_SUCCESS, results: {"whatever": 42} });
     })
 });
+
