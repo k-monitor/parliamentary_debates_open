@@ -1,9 +1,11 @@
 import config from '../../config.json'
 import { extract_speakers_from_hits } from '../../transformations'
+import { extract_categories_from_hits } from '../../transformations'
 
 export const SEARCH_TERM = 'search/SEARCH_TERM'
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS'
 export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER'
+export const CHANGE_CATEGORY_FILTER = 'search/CHANGE_CATEGORY_FILTER'
 
 const initialState = {
   term: '',
@@ -12,7 +14,8 @@ const initialState = {
       hits: []
     }
   },
-  speakers: {}
+  speakers: {},
+  categories: {},
 }
 
 export default (state = initialState, action) => {
@@ -33,6 +36,13 @@ export default (state = initialState, action) => {
               .map(speaker => ({[speaker]: true}))
           ),
           ...state.speakers
+        },
+        categories: {
+          ...Object.assign({},
+            ...extract_categories_from_hits(action.results.hits.hits)
+              .map(category => ({[category]: true}))
+          ),
+          ...state.categories
         }
       }
 
@@ -42,6 +52,15 @@ export default (state = initialState, action) => {
         speakers: {
           ...state.speakers,
           ...{[action.speaker]: action.value}
+        }
+      }
+
+    case CHANGE_CATEGORY_FILTER:
+      return {
+        ...state,
+        categories: {
+          ...state.categories,
+          ...{[action.category]: action.value}
         }
       }
 
@@ -66,6 +85,14 @@ export const update_speaker = ({ speaker, value }) => {
   return dispatch => {
     dispatch({
       type: CHANGE_SPEAKER_FILTER, speaker, value
+    })
+  }
+}
+
+export const update_category = ({ category, value }) => {
+  return dispatch => {
+    dispatch({
+      type: CHANGE_CATEGORY_FILTER, category, value
     })
   }
 }

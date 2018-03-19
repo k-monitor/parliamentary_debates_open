@@ -1,4 +1,5 @@
 import { extract_speakers_from_hits } from './transformations'
+import { extract_categories_from_hits } from './transformations'
 import { crossfilter } from './transformations'
 
 describe('crossfilter', () => {
@@ -12,6 +13,19 @@ describe('crossfilter', () => {
         'foo': true,
         'bar': true
       }
+    })([
+      {'_source': {'speaker': 'foo', 'text': 'asd'}},
+      {'_source': {'speaker': 'foo', 'text': 'asd2'}},
+      {'_source': {'speaker': 'bar', 'text': 'asd2'}},
+    ])).toEqual([
+      {'_source': {'speaker': 'foo', 'text': 'asd'}},
+      {'_source': {'speaker': 'foo', 'text': 'asd2'}},
+      {'_source': {'speaker': 'bar', 'text': 'asd2'}},
+    ])
+  })
+
+  it('speaker filter undefined', () => {
+    expect(crossfilter({
     })([
       {'_source': {'speaker': 'foo', 'text': 'asd'}},
       {'_source': {'speaker': 'foo', 'text': 'asd2'}},
@@ -37,6 +51,22 @@ describe('crossfilter', () => {
       {'_source': {'speaker': 'bar', 'text': 'asd2'}},
     ])
   })
+
+  it('not every category is shown', () => {
+    expect(crossfilter({
+      'categories': {
+        'foo': true,
+        'bar': false
+      }
+    })([
+      {'_source': {'topic': 'foo', 'text': 'asd'}},
+      {'_source': {'topic': 'foo', 'text': 'asd2'}},
+      {'_source': {'topic': 'bar', 'text': 'asd2'}},
+    ])).toEqual([
+      {'_source': {'topic': 'foo', 'text': 'asd'}},
+      {'_source': {'topic': 'foo', 'text': 'asd2'}},
+    ])
+  })
 })
 
 describe('extract_speakers_from_hits', () => {
@@ -59,6 +89,30 @@ describe('extract_speakers_from_hits', () => {
 
   it('does not return duplicates', () => {
     expect(extract_speakers_from_hits([{'_source': {'speaker': 'foo'}}, {'_source': {'speaker': 'foo'}}]))
+      .toEqual(['foo'])
+  })
+})
+
+describe('extract_categories_from_hits', () => {
+  it('returns empty list for empty input', () => {
+    expect(extract_categories_from_hits([])).toEqual([])
+  })
+
+  it('returns empty list for undefined', () => {
+    expect(extract_categories_from_hits(undefined)).toEqual([])
+  })
+
+  it('returns single speaker for single speaker input', () => {
+    expect(extract_categories_from_hits([{'_source': {'topic': 'foo'}}])).toEqual(['foo'])
+  })
+
+  it('returns both topics', () => {
+    expect(extract_categories_from_hits([{'_source': {'topic': 'foo'}}, {'_source': {'topic': 'bar'}}]))
+      .toEqual(['foo', 'bar'])
+  })
+
+  it('does not return duplicates', () => {
+    expect(extract_categories_from_hits([{'_source': {'topic': 'foo'}}, {'_source': {'topic': 'foo'}}]))
       .toEqual(['foo'])
   })
 })
