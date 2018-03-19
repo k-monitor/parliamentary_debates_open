@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col, FormControl } from 'react-bootstrap';
-import {update_search, update_speaker, update_category} from './store/modules/search'
+import {update_search, update_speaker, update_topic} from './store/modules/search'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Results from './Results.js'
 import Speakers from './Speakers.js'
-import Categories from './Categories.js'
+import Topics from './Topics.js'
 import { crossfilter } from './transformations'
 
 const Home = props => (
@@ -16,14 +16,14 @@ const Home = props => (
       <FormControl onChange={event => props.update_search(event.target.value)} />
       <h3>Speakers</h3>
       <Speakers speakers={props.search.speakers} onChange={props.update_speaker} />
-      <h3>Categories</h3>
-      <Categories categories={props.search.categories} onChange={props.update_category} />
+      <h3>Topics</h3>
+      <Topics topics={props.search.topics} onChange={props.update_topic} />
     </Col>
     <Col sm={9}>
       <Results results={
         crossfilter({
           speakers: props.search.speakers,
-          categories: props.search.categories,
+          topics: props.search.topics,
         })(props.search.results.hits.hits)
       } />
     </Col>
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  update_search, update_speaker, update_category
+  update_search, update_speaker, update_topic
 }, dispatch)
 
 export default connect(

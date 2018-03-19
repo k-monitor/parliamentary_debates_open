@@ -1,11 +1,11 @@
 import config from '../../config.json'
 import { extract_speakers_from_hits } from '../../transformations'
-import { extract_categories_from_hits } from '../../transformations'
+import { extract_topics_from_hits } from '../../transformations'
 
 export const SEARCH_TERM = 'search/SEARCH_TERM'
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS'
 export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER'
-export const CHANGE_CATEGORY_FILTER = 'search/CHANGE_CATEGORY_FILTER'
+export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER'
 
 const initialState = {
   term: '',
@@ -15,7 +15,7 @@ const initialState = {
     }
   },
   speakers: {},
-  categories: {},
+  topics: {},
 }
 
 export default (state = initialState, action) => {
@@ -37,12 +37,12 @@ export default (state = initialState, action) => {
           ),
           ...state.speakers
         },
-        categories: {
+        topics: {
           ...Object.assign({},
-            ...extract_categories_from_hits(action.results.hits.hits)
-              .map(category => ({[category]: true}))
+            ...extract_topics_from_hits(action.results.hits.hits)
+              .map(topic => ({[topic]: true}))
           ),
-          ...state.categories
+          ...state.topics
         }
       }
 
@@ -55,12 +55,12 @@ export default (state = initialState, action) => {
         }
       }
 
-    case CHANGE_CATEGORY_FILTER:
+    case CHANGE_TOPIC_FILTER:
       return {
         ...state,
-        categories: {
-          ...state.categories,
-          ...{[action.category]: action.value}
+        topics: {
+          ...state.topics,
+          ...{[action.topic]: action.value}
         }
       }
 
@@ -89,10 +89,10 @@ export const update_speaker = ({ speaker, value }) => {
   }
 }
 
-export const update_category = ({ category, value }) => {
+export const update_topic = ({ topic, value }) => {
   return dispatch => {
     dispatch({
-      type: CHANGE_CATEGORY_FILTER, category, value
+      type: CHANGE_TOPIC_FILTER, topic, value
     })
   }
 }
