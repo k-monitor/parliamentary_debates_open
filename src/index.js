@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store'
+import "react-billboardjs/lib/billboard.css";
 
 ReactDOM.render(
   <Provider store={store}>

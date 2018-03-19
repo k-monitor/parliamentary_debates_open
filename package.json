@@ -6,6 +6,7 @@
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
+    "react-billboardjs": "^1.3.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

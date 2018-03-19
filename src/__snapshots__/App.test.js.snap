@@ -52,7 +52,38 @@ exports[`renders correctly 1`] = `
             0
              találat:
           </h2>
-          ,
+          <h3>
+            Summary
+          </h3>
+          <div
+            className="row"
+          >
+            <div
+              className="col-sm-6"
+            >
+              <h4>
+                Speakers
+              </h4>
+              <div
+                className={undefined}
+                style={undefined}
+              />
+            </div>
+            <div
+              className="col-sm-6"
+            >
+              <h4>
+                Topics
+              </h4>
+              <div
+                className={undefined}
+                style={undefined}
+              />
+            </div>
+          </div>
+          <h3>
+            Results
+          </h3>
           <div />
         </div>
       </div>
