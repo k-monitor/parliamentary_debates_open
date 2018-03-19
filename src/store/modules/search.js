@@ -1,6 +1,7 @@
 import config from '../../config.json'
 import { extract_speakers_from_hits } from '../../transformations'
 import { extract_topics_from_hits } from '../../transformations'
+import { counts } from '../../transformations'
 
 export const SEARCH_TERM = 'search/SEARCH_TERM'
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS'
@@ -15,6 +16,7 @@ const initialState = {
     }
   },
   speakers: {},
+  speaker_counts: {},
   topics: {},
 }
 
@@ -37,6 +39,10 @@ export default (state = initialState, action) => {
           ),
           ...state.speakers
         },
+        speaker_counts: counts(
+          action.results.hits.hits,
+          hit => hit._source.speaker
+        ),
         topics: {
           ...Object.assign({},
             ...extract_topics_from_hits(action.results.hits.hits)

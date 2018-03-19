@@ -1,6 +1,7 @@
 import { extract_speakers_from_hits } from './transformations'
 import { extract_topics_from_hits } from './transformations'
 import { crossfilter } from './transformations'
+import { counts } from './transformations'
 
 describe('crossfilter', () => {
   it('returns empty list for empty input', () => {
@@ -114,5 +115,21 @@ describe('extract_topics_from_hits', () => {
   it('does not return duplicates', () => {
     expect(extract_topics_from_hits([{'_source': {'topic': 'foo'}}, {'_source': {'topic': 'foo'}}]))
       .toEqual(['foo'])
+  })
+})
+
+describe('counts', () => {
+  it('returns empty object for empty input', () => {
+    expect(counts([], () => 4)).toEqual({})
+  })
+
+  it('count objects in a single category', () => {
+    expect(counts(['foo', 'bar'], () => 4)).toEqual({4: 2})
+  })
+
+  it('count objects in a multiple categories', () => {
+    expect(counts(['foo', 'bar'], x => x)).toEqual({
+      'foo': 1, 'bar': 1
+    })
   })
 })

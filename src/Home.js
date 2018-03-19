@@ -7,6 +7,7 @@ import Results from './Results.js'
 import Speakers from './Speakers.js'
 import Topics from './Topics.js'
 import { crossfilter } from './transformations'
+import { counts } from './transformations'
 
 const Home = props => (
   <Row>
@@ -15,7 +16,8 @@ const Home = props => (
       <h3>Keyword</h3>
       <FormControl onChange={event => props.update_search(event.target.value)} />
       <h3>Speakers</h3>
-      <Speakers speakers={props.search.speakers} onChange={props.update_speaker} />
+      <Speakers counts={props.search.speaker_counts}
+        speakers={props.search.speakers} onChange={props.update_speaker} />
       <h3>Topics</h3>
       <Topics topics={props.search.topics} onChange={props.update_topic} />
     </Col>
