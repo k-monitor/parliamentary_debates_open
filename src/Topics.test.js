@@ -9,7 +9,10 @@ import { ConnectedRouter } from 'react-router-redux'
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Topics topics={{"foo": true, "bar": false}} />)
+    .create(<Topics
+      topics={{"foo": true, "bar": false}}
+      counts={{"foo": 3, "bar": 4}}
+      />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 })

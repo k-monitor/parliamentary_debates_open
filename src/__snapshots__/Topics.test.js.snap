@@ -11,12 +11,18 @@ exports[`renders correctly 1`] = `
         title=""
       >
         <input
-          checked={true}
+          checked={false}
           disabled={false}
           onChange={[Function]}
           type="checkbox"
         />
-        foo
+        bar
+         
+        <b>
+          (
+          4
+          )
+        </b>
       </label>
     </div>
   </li>
@@ -29,12 +35,18 @@ exports[`renders correctly 1`] = `
         title=""
       >
         <input
-          checked={false}
+          checked={true}
           disabled={false}
           onChange={[Function]}
           type="checkbox"
         />
-        bar
+        foo
+         
+        <b>
+          (
+          3
+          )
+        </b>
       </label>
     </div>
   </li>

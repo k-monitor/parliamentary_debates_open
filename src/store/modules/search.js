@@ -39,9 +39,9 @@ export default (state = initialState, action) => {
           ),
           ...state.speakers
         },
-        speaker_counts: counts(
+        topic_counts: counts(
           action.results.hits.hits,
-          hit => hit._source.speaker
+          hit => hit._source.topic
         ),
         topics: {
           ...Object.assign({},

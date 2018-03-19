@@ -16,10 +16,21 @@ const Home = props => (
       <h3>Keyword</h3>
       <FormControl onChange={event => props.update_search(event.target.value)} />
       <h3>Speakers</h3>
-      <Speakers counts={props.search.speaker_counts}
+      <Speakers counts={counts(
+          crossfilter({
+            'topics': props.search.topics
+          })(props.search.results.hits.hits),
+          hit => hit._source.speaker
+        )}
         speakers={props.search.speakers} onChange={props.update_speaker} />
       <h3>Topics</h3>
-      <Topics topics={props.search.topics} onChange={props.update_topic} />
+      <Topics counts={counts(
+          crossfilter({
+            'speakers': props.search.speakers
+          })(props.search.results.hits.hits),
+          hit => hit._source.topic
+        )}
+        topics={props.search.topics} onChange={props.update_topic} />
     </Col>
     <Col sm={9}>
       <Results results={
