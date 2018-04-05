@@ -52,39 +52,37 @@ exports[`renders correctly 1`] = `
             0
              találat:
           </h2>
-          <h3>
-            Summary
-          </h3>
           <div
-            className="row"
+            className="table-responsive"
           >
-            <div
-              className="col-sm-6"
+            <table
+              className="table"
             >
-              <h4>
-                Speakers
-              </h4>
-              <div
-                className={undefined}
-                style={undefined}
-              />
-            </div>
-            <div
-              className="col-sm-6"
-            >
-              <h4>
-                Topics
-              </h4>
-              <div
-                className={undefined}
-                style={undefined}
-              />
-            </div>
+              <thead>
+                <tr>
+                  <th>
+                    Dátum
+                  </th>
+                  <th>
+                    Ülésszak
+                  </th>
+                  <th>
+                    Ülés típusa
+                  </th>
+                  <th>
+                    Felszólaló
+                  </th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody />
+            </table>
           </div>
-          <h3>
-            Results
-          </h3>
-          <div />
+          <div>
+            <ul
+              className="pagination"
+            />
+          </div>
         </div>
       </div>
     </div>

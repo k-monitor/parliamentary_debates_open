@@ -33,12 +33,8 @@ const Home = props => (
         topics={props.search.topics} onChange={props.update_topic} />
     </Col>
     <Col sm={9}>
-      <Results results={
-        crossfilter({
-          speakers: props.search.speakers,
-          topics: props.search.topics,
-        })(props.search.results.hits.hits)
-      } />
+      <Results results={props.search.results} page={props.search.page}
+        navigate_to_page={n => props.update_search(props.search.term, n)} />
     </Col>
   </Row>
 )

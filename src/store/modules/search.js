@@ -12,9 +12,11 @@ const initialState = {
   term: '',
   results: {
     hits: {
+      total: 0,
       hits: []
-    }
+    },
   },
+  page: 0,
   speakers: {},
   speaker_counts: {},
   topics: {},
@@ -32,6 +34,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         results: action.results,
+        page: action.page,
         speakers: {
           ...Object.assign({},
             ...extract_speakers_from_hits(action.results.hits.hits)
@@ -75,15 +78,20 @@ export default (state = initialState, action) => {
   }
 }
 
-export const update_search = (term) => {
+export const update_search = (term, page = 0) => {
   return dispatch => {
     dispatch({
       type: SEARCH_TERM, term
     })
 
-    return fetch(`${config.SEARCH_API}?q=${term}`)
+    const start = page * config.page_size
+
+    const url =
+      `${config.SEARCH_API}?q=${term}&size=${config.page_size}&from=${start}`
+
+    return fetch(url)
       .then(response => response.json())
-      .then(results => dispatch({ type: SEARCH_SUCCESS, results }))
+      .then(results => dispatch({ type: SEARCH_SUCCESS, page, results }))
   }
 }
 
@@ -102,3 +110,4 @@ export const update_topic = ({ topic, value }) => {
     })
   }
 }
+

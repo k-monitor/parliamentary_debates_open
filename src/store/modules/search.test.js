@@ -30,17 +30,26 @@ it('changes current search term', () => {
     })
 });
 
-it('calls API and dispatches success action', () => {
-  const store = mockStore({'search': {'term': ''}});
-  const term = 'John Doe'
-  window.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve(mockResponse(200, null, '{"whatever": 42}')));
+const tests = [
+  {term: 'John Doe'},
+  {term: 'Doe John', page: 3},
+]
 
-  return store.dispatch(update_search(term))
-    .then(() => {
-      expect(window.fetch).toBeCalledWith(`${config.SEARCH_API}?q=${term}`)
-      const actions = store.getActions();
-      expect(actions).toContainEqual({type: SEARCH_SUCCESS, results: {"whatever": 42} });
-    })
+tests.forEach(({term, page}) => {
+  it('calls API and dispatches success action', () => {
+    const store = mockStore({'search': {'term': ''}});0
+    const from = page ? (page * config.page_size) : 0
+    const page_ = page ? page : 0
+    window.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve(mockResponse(200, null, '{"whatever": 42}')));
+
+    return store.dispatch(update_search(term, page))
+      .then(() => {
+        expect(window.fetch).toBeCalledWith(
+          `${config.SEARCH_API}?q=${term}&size=${config.page_size}&from=${from}`)
+        const actions = store.getActions();
+        expect(actions).toContainEqual({type: SEARCH_SUCCESS, results: {"whatever": 42}, page: page_ });
+      })
+  })
 });
 
