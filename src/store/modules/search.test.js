@@ -43,10 +43,27 @@ tests.forEach(({term, page}) => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(mockResponse(200, null, '{"whatever": 42}')));
 
+    const query = {
+      "q": term,
+      "size": config.page_size,
+      "from": from,
+    }
+
+    const payload = {
+      "id": "filtered_query_v2",
+      "params": query
+    }
+
     return store.dispatch(update_search(term, page))
       .then(() => {
         expect(window.fetch).toBeCalledWith(
-          `${config.SEARCH_API}?q=${term}&size=${config.page_size}&from=${from}`)
+          `${config.SEARCH_API}`, {
+            'method': 'POST',
+            'body': JSON.stringify(payload),
+            'headers': {
+              'content-type': 'application/json'
+            },
+          })
         const actions = store.getActions();
         expect(actions).toContainEqual({type: SEARCH_SUCCESS, results: {"whatever": 42}, page: page_ });
       })

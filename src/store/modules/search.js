@@ -87,9 +87,23 @@ export const update_search = (term, page = 0) => {
     const start = page * config.page_size
 
     const url =
-      `${config.SEARCH_API}?q=${term}&size=${config.page_size}&from=${start}`
+      `${config.SEARCH_API}`
 
-    return fetch(url)
+    return fetch(
+      url, 
+      {
+        'method': 'POST',
+        'body': JSON.stringify({
+          "id": "filtered_query_v2",
+          "params": {
+            'q': term,
+            'size': config.page_size,
+            'from': start
+          }
+        }),
+        "headers": {"content-type": "application/json"}
+      }
+    )
       .then(response => response.json())
       .then(results => dispatch({ type: SEARCH_SUCCESS, page, results }))
   }
