@@ -7,13 +7,14 @@ import Results from './Results.js'
 import Speakers from './Speakers.js'
 import Topics from './Topics.js'
 import { buckets_to_map } from './transformations'
+import {DelayInput} from 'react-delay-input';
 
 const Home = props => (
   <Row>
     <Col sm={3}>
       <h2>Search</h2>
       <h3>Keyword</h3>
-      <FormControl onChange={event => props.update_search(event.target.value)} />
+      <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search(event.target.value)} />
       <h3>Speakers</h3>
       <Speakers counts={buckets_to_map(props.search.results.aggregations.speakers.buckets)}
         speakers={props.search.speakers} onChange={props.update_speaker} />
