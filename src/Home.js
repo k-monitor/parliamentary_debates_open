@@ -8,9 +8,15 @@ import Speakers from './Speakers.js'
 import Topics from './Topics.js'
 import { buckets_to_map } from './transformations'
 import {DelayInput} from 'react-delay-input';
+import Loading from 'react-loading-bar'
 
 const Home = props => (
   <Row>
+    <Loading
+      show={props.search.loading}
+      color="red"
+      showSpinner={false}
+    />
     <Col sm={3}>
       <h2>Search</h2>
       <h3>Keyword</h3>

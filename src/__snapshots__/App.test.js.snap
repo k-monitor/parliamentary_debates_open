@@ -20,6 +20,26 @@ exports[`renders correctly 1`] = `
     <div
       className="row"
     >
+      <div>
+        <div
+          className="Loading__loading___1m_fZ"
+        >
+          <div
+            className="Loading__bar___21yOt"
+            style={
+              Object {
+                "background": "red",
+                "display": "none",
+                "width": "0%",
+              }
+            }
+          >
+            <div
+              className="Loading__peg___3Y_28"
+            />
+          </div>
+        </div>
+      </div>
       <div
         className="col-sm-3"
       >
@@ -32,8 +52,11 @@ exports[`renders correctly 1`] = `
         <input
           className="form-control"
           id={undefined}
+          onBlur={[Function]}
           onChange={[Function]}
-          type={undefined}
+          onKeyDown={[Function]}
+          type="text"
+          value=""
         />
         <h3>
           Speakers

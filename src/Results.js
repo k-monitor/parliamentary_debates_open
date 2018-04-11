@@ -15,7 +15,7 @@ const Results = ({ results, page, navigate_to_page }) => (
         <span className="meta">{result._source.date},  ({result._source.session}, {result._source.sitting_type})</span>
       </h1>
       <p dangerouslySetInnerHTML={{__html: result.highlight.text}} />
-      <span class="source">
+      <span className="source">
         Forrás: <a href={result._source.url}>{result._source.url}</a>
       </span>
     </article>

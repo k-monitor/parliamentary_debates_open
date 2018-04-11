@@ -6,6 +6,7 @@ export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER'
 export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER'
 
 const initialState = {
+  loading: false,
   term: '',
   results: {
     aggregations: {
@@ -26,7 +27,8 @@ export default (state = initialState, action) => {
     case SEARCH_TERM:
       return {
         ...state,
-        term: action.term
+        term: action.term,
+        loading: true
       }
 
     case SEARCH_SUCCESS:
@@ -34,6 +36,7 @@ export default (state = initialState, action) => {
         ...state,
         results: action.results,
         page: action.page,
+        loading: false,
         speakers: {
           ...Object.assign(
             {}, ...action.results.aggregations.speakers.buckets
