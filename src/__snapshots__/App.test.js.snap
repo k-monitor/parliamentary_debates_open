@@ -39,10 +39,6 @@ exports[`renders correctly 1`] = `
           Speakers
         </h3>
         <ul />
-        <h3>
-          Topics
-        </h3>
-        <ul />
       </div>
       <div
         className="col-sm-9"
@@ -52,32 +48,6 @@ exports[`renders correctly 1`] = `
             0
              találat:
           </h2>
-          <div
-            className="table-responsive"
-          >
-            <table
-              className="table"
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Dátum
-                  </th>
-                  <th>
-                    Ülésszak
-                  </th>
-                  <th>
-                    Ülés típusa
-                  </th>
-                  <th>
-                    Felszólaló
-                  </th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody />
-            </table>
-          </div>
           <div>
             <ul
               className="pagination"

@@ -10,8 +10,8 @@ import { ConnectedRouter } from 'react-router-redux'
 it('renders correctly', () => {
   const tree = renderer
     .create(<Results results={{"hits": {"hits": [
-            {"_source": {"text": "Foo"}, "_id": 3},
-            {"_source": {"text": "Bar"}, "_id": 2}
+            {"highlight": {"text": "a"}, "_source": {"text": "Foo"}, "_id": 3},
+            {"highlight": {"text": "b"}, "_source": {"text": "Bar"}, "_id": 2}
         ]}}} />)
     .toJSON();
   expect(tree).toMatchSnapshot();

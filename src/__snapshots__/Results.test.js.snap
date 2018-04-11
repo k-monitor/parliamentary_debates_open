@@ -5,63 +5,76 @@ exports[`renders correctly 1`] = `
   <h2>
      találat:
   </h2>
-  <div
-    className="table-responsive"
+  <article
+    className="result"
   >
-    <table
-      className="table"
+    <h1>
+      <a
+        href="#"
+      >
+        Téma: 
+        <b />
+         Felszólaló: 
+      </a>
+      <span
+        className="meta"
+      >
+        ,  (
+        , 
+        )
+      </span>
+    </h1>
+    <p
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "a",
+        }
+      }
+    />
+    <span
+      class="source"
     >
-      <thead>
-        <tr>
-          <th>
-            Dátum
-          </th>
-          <th>
-            Ülésszak
-          </th>
-          <th>
-            Ülés típusa
-          </th>
-          <th>
-            Felszólaló
-          </th>
-          <th />
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td />
-          <td />
-          <td />
-          <td />
-          <td>
-            <button
-              className="btn btn-xs btn-default"
-              disabled={false}
-              type="button"
-            >
-              Részletek
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td />
-          <td />
-          <td />
-          <td />
-          <td>
-            <button
-              className="btn btn-xs btn-default"
-              disabled={false}
-              type="button"
-            >
-              Részletek
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      Forrás: 
+      <a
+        href={undefined}
+      />
+    </span>
+  </article>
+  <article
+    className="result"
+  >
+    <h1>
+      <a
+        href="#"
+      >
+        Téma: 
+        <b />
+         Felszólaló: 
+      </a>
+      <span
+        className="meta"
+      >
+        ,  (
+        , 
+        )
+      </span>
+    </h1>
+    <p
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "b",
+        }
+      }
+    />
+    <span
+      class="source"
+    >
+      Forrás: 
+      <a
+        href={undefined}
+      />
+    </span>
+  </article>
   <div>
     <ul
       className="pagination"

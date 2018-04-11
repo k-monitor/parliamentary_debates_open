@@ -3,9 +3,7 @@ import { Checkbox } from 'react-bootstrap';
 
 const Speakers = ({ speakers, onChange, counts }) => (
   <ul>
-    {Object.keys(speakers)
-        .filter(speaker => counts[speaker] >= 1)
-        .sort((a, b) => counts[a] <= counts[b])
+    {Object.keys(counts)
         .map(speaker => (
       <li key={speaker}>
         <Checkbox onChange={event => onChange({

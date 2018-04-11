@@ -1,7 +1,4 @@
 import config from '../../config.json'
-import { extract_speakers_from_hits } from '../../transformations'
-import { extract_topics_from_hits } from '../../transformations'
-import { counts } from '../../transformations'
 
 export const SEARCH_TERM = 'search/SEARCH_TERM'
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS'
@@ -11,14 +8,16 @@ export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER'
 const initialState = {
   term: '',
   results: {
+    aggregations: {
+      speakers: {buckets: []}
+    },
     hits: {
       total: 0,
       hits: []
     },
   },
-  page: 0,
   speakers: {},
-  speaker_counts: {},
+  page: 0,
   topics: {},
 }
 
@@ -36,22 +35,10 @@ export default (state = initialState, action) => {
         results: action.results,
         page: action.page,
         speakers: {
-          ...Object.assign({},
-            ...extract_speakers_from_hits(action.results.hits.hits)
-              .map(speaker => ({[speaker]: true}))
-          ),
+          ...Object.assign(
+            {}, ...action.results.aggregations.speakers.buckets
+              .map(speaker => ({[speaker.key]: true}))),
           ...state.speakers
-        },
-        topic_counts: counts(
-          action.results.hits.hits,
-          hit => hit._source.topic
-        ),
-        topics: {
-          ...Object.assign({},
-            ...extract_topics_from_hits(action.results.hits.hits)
-              .map(topic => ({[topic]: true}))
-          ),
-          ...state.topics
         }
       }
 
@@ -61,15 +48,6 @@ export default (state = initialState, action) => {
         speakers: {
           ...state.speakers,
           ...{[action.speaker]: action.value}
-        }
-      }
-
-    case CHANGE_TOPIC_FILTER:
-      return {
-        ...state,
-        topics: {
-          ...state.topics,
-          ...{[action.topic]: action.value}
         }
       }
 
@@ -113,14 +91,6 @@ export const update_speaker = ({ speaker, value }) => {
   return dispatch => {
     dispatch({
       type: CHANGE_SPEAKER_FILTER, speaker, value
-    })
-  }
-}
-
-export const update_topic = ({ topic, value }) => {
-  return dispatch => {
-    dispatch({
-      type: CHANGE_TOPIC_FILTER, topic, value
     })
   }
 }

@@ -1,36 +1,25 @@
 import React from 'react';
 import BillboardChart from "react-billboardjs";
 import { counts } from './transformations'
-import { Row, Col, Pagination, Table, Button } from 'react-bootstrap';
+import { Row, Col, Pagination, Button } from 'react-bootstrap';
 import get_pages from './pagination'
 import config from './config.json'
 
 const Results = ({ results, page, navigate_to_page }) => (
   <div>
   <h2>{results.hits.total} találat:</h2>
-  <Table responsive>
-    <thead>
-      <tr>
-        <th>Dátum</th>
-        <th>Ülésszak</th>
-        <th>Ülés típusa</th>
-        <th>Felszólaló</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>{
-        results.hits.hits.map(result => (
-          <tr key={ result._id }>
-            <td>{result._source.date}</td>
-            <td>{result._source.session}</td>
-            <td>{result._source.sitting_type}</td>
-            <td>{result._source.speaker}</td>
-            <td><Button bsSize="xsmall">Részletek</Button></td>
-          </tr>
-        ))
-      }</tbody>
-  </Table>
-
+  {results.hits.hits.map(result => (
+    <article className="result" key={ result._id }>
+      <h1>
+        <a href="#">Téma: <b>{result._source.topic}</b> Felszólaló: {result._source.speaker}</a>
+        <span className="meta">{result._source.date},  ({result._source.session}, {result._source.sitting_type})</span>
+      </h1>
+      <p dangerouslySetInnerHTML={{__html: result.highlight.text}} />
+      <span class="source">
+        Forrás: <a href={result._source.url}>{result._source.url}</a>
+      </span>
+    </article>
+  ))}
     <div>
         <Pagination>
             {get_pages(config.page_size, results.hits.total).map(number => (

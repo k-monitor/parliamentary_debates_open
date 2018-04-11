@@ -11,16 +11,16 @@ exports[`renders correctly 1`] = `
         title=""
       >
         <input
-          checked={false}
+          checked={true}
           disabled={false}
           onChange={[Function]}
           type="checkbox"
         />
-        Random Name
+        John Doe
          
         <b>
           (
-          2
+          1
           )
         </b>
       </label>
@@ -35,16 +35,16 @@ exports[`renders correctly 1`] = `
         title=""
       >
         <input
-          checked={true}
+          checked={false}
           disabled={false}
           onChange={[Function]}
           type="checkbox"
         />
-        John Doe
+        Random Name
          
         <b>
           (
-          1
+          2
           )
         </b>
       </label>

@@ -26,3 +26,32 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.result {
+  margin-bottom: 3.5rem;
+}
+
+.result em {
+  background: yellow;
+}
+
+.result .meta {
+  float: right;
+  color: gray;
+  font-size: .9em;
+}
+
+.result h1 {
+  font-size: 1.15em;
+}
+
+.result .source {
+  font-size: .9em;
+  color: gray;
+}
+
+.result .source a {
+  text-decoration: underline;
+  font-style: italic;
+  color: inherit;
+}
