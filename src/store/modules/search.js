@@ -10,7 +10,8 @@ const initialState = {
   term: '',
   results: {
     aggregations: {
-      speakers: {buckets: []}
+      speakers: {buckets: []},
+      terms: {buckets: []},
     },
     hits: {
       total: 0,
@@ -18,7 +19,9 @@ const initialState = {
     },
   },
   speakers: {},
+  terms: {},
   speaker_filter: '',
+  date_filter: '',
   page: 0,
   topics: {},
 }
@@ -26,11 +29,12 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_TERM:
-      console.log(action.search.term)
+      console.log(action.search)
       return {
         ...state,
         term: action.search.term,
         speaker_filter: action.search.speaker_filter,
+        date_filter: action.search.date_filter,
         loading: true
       }
 
@@ -42,6 +46,9 @@ export default (state = initialState, action) => {
         loading: false,
         speakers: {
           ...action.results.aggregations.speakers.buckets
+        },
+        terms: {
+          ...action.results.aggregations.terms.buckets
         }
       }
 
@@ -75,7 +82,12 @@ export const update_search = (search, page = 0) => {
               search.speaker_filter
                 ? {'filter.speaker': search.speaker_filter}
                 : {}
-            )
+            ),
+            ...(
+              search.date_filter
+                ? {'filter.date': search.date_filter}
+                : {}
+            ),
           }
         }),
         "headers": {"content-type": "application/json"}

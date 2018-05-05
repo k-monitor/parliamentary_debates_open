@@ -4,9 +4,7 @@ import {update_search} from './store/modules/search'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Results from './Results.js'
-import Speakers from './Speakers.js'
-import Topics from './Topics.js'
-import { buckets_to_map } from './transformations'
+import Filter from './Filter.js'
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar'
 
@@ -22,8 +20,12 @@ const Home = props => (
       <h3>Kulcsszó</h3>
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
       <h3>Felszólalók</h3>
-      <Speakers counts={buckets_to_map(props.search.results.aggregations.speakers.buckets)}
-        speakers={props.search.speakers} onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} speaker_filter={props.search.speaker_filter} />
+      <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
+        onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
+      <h3>Dátum</h3>
+      <Filter counts={props.search.results.aggregations.terms.buckets.map(x => x.dates.buckets).reduce((a, b) => a.concat(b), [])}
+        field_name="date" getLabel={item => item.key_as_string} getValue={item => item.key_as_string}
+        onChange={date => props.update_search({...props.search, date_filter: date.date})} filter_value={props.search.date_filter} />
     </Col>
     <Col sm={9}>
       <Results results={props.search.results} page={props.search.page}
