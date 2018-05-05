@@ -18,6 +18,7 @@ const initialState = {
     },
   },
   speakers: {},
+  selected_speaker: '',
   page: 0,
   topics: {},
 }
@@ -28,6 +29,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         term: action.term,
+        selected_speaker: '',
         loading: true
       }
 
@@ -38,20 +40,14 @@ export default (state = initialState, action) => {
         page: action.page,
         loading: false,
         speakers: {
-          ...Object.assign(
-            {}, ...action.results.aggregations.speakers.buckets
-              .map(speaker => ({[speaker.key]: true}))),
-          ...state.speakers
+          ...action.results.aggregations.speakers.buckets
         }
       }
 
     case CHANGE_SPEAKER_FILTER:
       return {
         ...state,
-        speakers: {
-          ...state.speakers,
-          ...{[action.speaker]: action.value}
-        }
+        selected_speaker: action.speaker
       }
 
     default:
@@ -90,10 +86,10 @@ export const update_search = (term, page = 0) => {
   }
 }
 
-export const update_speaker = ({ speaker, value }) => {
+export const update_speaker = ({ speaker }) => {
   return dispatch => {
     dispatch({
-      type: CHANGE_SPEAKER_FILTER, speaker, value
+      type: CHANGE_SPEAKER_FILTER, speaker
     })
   }
 }

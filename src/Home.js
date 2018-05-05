@@ -23,7 +23,7 @@ const Home = props => (
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search(event.target.value)} />
       <h3>Felszólalók</h3>
       <Speakers counts={buckets_to_map(props.search.results.aggregations.speakers.buckets)}
-        speakers={props.search.speakers} onChange={props.update_speaker} />
+        speakers={props.search.speakers} onChange={props.update_speaker} selected_speaker={props.search.selected_speaker} />
     </Col>
     <Col sm={9}>
       <Results results={props.search.results} page={props.search.page}
@@ -33,7 +33,7 @@ const Home = props => (
 )
 
 const mapStateToProps = state => ({
-  search: state.search
+  search: state.search,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
