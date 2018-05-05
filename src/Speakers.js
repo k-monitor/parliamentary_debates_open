@@ -1,8 +1,9 @@
 import React from 'react';
 import { Checkbox } from 'react-bootstrap';
+import './filter.css'
 
 const Speakers = ({ speakers, onChange, counts }) => (
-  <ul>
+  <ul class="filter">
     {Object.keys(counts)
         .map(speaker => (
       <li key={speaker}>
