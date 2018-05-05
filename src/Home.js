@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, FormControl } from 'react-bootstrap';
-import {update_search, update_speaker} from './store/modules/search'
+import {update_search} from './store/modules/search'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Results from './Results.js'
@@ -20,14 +20,14 @@ const Home = props => (
     <Col sm={3}>
       <h2>Keresés</h2>
       <h3>Kulcsszó</h3>
-      <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search(event.target.value)} />
+      <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
       <h3>Felszólalók</h3>
       <Speakers counts={buckets_to_map(props.search.results.aggregations.speakers.buckets)}
-        speakers={props.search.speakers} onChange={props.update_speaker} selected_speaker={props.search.selected_speaker} />
+        speakers={props.search.speakers} onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} speaker_filter={props.search.speaker_filter} />
     </Col>
     <Col sm={9}>
       <Results results={props.search.results} page={props.search.page}
-        navigate_to_page={n => props.update_search(props.search.term, n)} />
+        navigate_to_page={n => props.update_search(props.search, n)} />
     </Col>
   </Row>
 )
@@ -37,7 +37,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  update_search, update_speaker
+  update_search
 }, dispatch)
 
 export default connect(

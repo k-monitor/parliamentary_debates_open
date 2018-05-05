@@ -18,7 +18,7 @@ const initialState = {
     },
   },
   speakers: {},
-  selected_speaker: '',
+  speaker_filter: '',
   page: 0,
   topics: {},
 }
@@ -26,10 +26,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_TERM:
+      console.log(action.search.term)
       return {
         ...state,
-        term: action.term,
-        selected_speaker: '',
+        term: action.search.term,
+        speaker_filter: action.search.speaker_filter,
         loading: true
       }
 
@@ -44,21 +45,15 @@ export default (state = initialState, action) => {
         }
       }
 
-    case CHANGE_SPEAKER_FILTER:
-      return {
-        ...state,
-        selected_speaker: action.speaker
-      }
-
     default:
       return state
   }
 }
 
-export const update_search = (term, page = 0) => {
+export const update_search = (search, page = 0) => {
   return dispatch => {
     dispatch({
-      type: SEARCH_TERM, term
+      type: SEARCH_TERM, search
     })
 
     const start = page * config.page_size
@@ -73,9 +68,14 @@ export const update_search = (term, page = 0) => {
         'body': JSON.stringify({
           "id": "filtered_query_v2",
           "params": {
-            'q': term,
+            'q': search.term,
             'size': config.page_size,
-            'from': start
+            'from': start,
+            ...(
+              search.speaker_filter
+                ? {'filter.speaker': search.speaker_filter}
+                : {}
+            )
           }
         }),
         "headers": {"content-type": "application/json"}
@@ -85,12 +85,3 @@ export const update_search = (term, page = 0) => {
       .then(results => dispatch({ type: SEARCH_SUCCESS, page, results }))
   }
 }
-
-export const update_speaker = ({ speaker }) => {
-  return dispatch => {
-    dispatch({
-      type: CHANGE_SPEAKER_FILTER, speaker
-    })
-  }
-}
-
