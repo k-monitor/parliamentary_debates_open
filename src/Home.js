@@ -18,10 +18,10 @@ const Home = props => (
       showSpinner={false}
     />
     <Col sm={3}>
-      <h2>Search</h2>
-      <h3>Keyword</h3>
+      <h2>Keresés</h2>
+      <h3>Kulcsszó</h3>
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search(event.target.value)} />
-      <h3>Speakers</h3>
+      <h3>Felszólalók</h3>
       <Speakers counts={buckets_to_map(props.search.results.aggregations.speakers.buckets)}
         speakers={props.search.speakers} onChange={props.update_speaker} />
     </Col>
