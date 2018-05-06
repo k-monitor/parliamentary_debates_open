@@ -1,4 +1,6 @@
-ul {
+ul.filter {
   list-style-type: none;
   padding: 0;
+  max-height: 250px;
+  overflow-y: auto;
 }
