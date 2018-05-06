@@ -26,7 +26,9 @@ const Results = ({ results, page, navigate_to_page }) => (
   ))}
     <div>
         <Pagination>
-            {get_pages(config.page_size, results.hits.total).map(number => (
+            {get_pages(config.page_size, results.hits.total)
+              .filter(number => Math.min(number, Math.abs(number - page), Math.abs(Math.ceil(results.hits.total / config.page_size)- number)) < 4)
+              .map(number => (
                 <Pagination.Item key={number} active={number === page}
                   onClick={() => navigate_to_page(number)}>
                     {number + 1}
