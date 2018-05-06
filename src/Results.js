@@ -11,7 +11,11 @@ const Results = ({ results, page, navigate_to_page }) => (
   {results.hits.hits.map(result => (
     <article className="result" key={ result._id }>
       <h1>
-        <a href="#"><b>{result._source.topic}</b> &mdash; {result._source.speaker}</a>
+        <a href="#"><b>{
+            Array.isArray(result._source.topic)
+              ? result._source.topic.join(', ')
+              : result._source.topic
+        }</b> &mdash; {result._source.speaker}</a>
         <span className="meta">{result._source.date},  ({result._source.session}, {result._source.sitting_type})</span>
       </h1>
       <p dangerouslySetInnerHTML={{__html: result.highlight.text}} />
