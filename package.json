@@ -2,6 +2,7 @@
   "name": "parldata_frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://k-monitor.github.io/parliamentary_debates_open/",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.5",
@@ -23,10 +24,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
+    "gh-pages": "^1.1.0",
     "redux-mock-store": "^1.5.1"
   },
   "config": {

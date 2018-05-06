@@ -10,7 +10,7 @@ import "react-billboardjs/lib/billboard.css";
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <ConnectedRouter history={history} basename="/parliamentary_debates_open/">
       <div>
         <App />
       </div>

@@ -13,7 +13,7 @@ class App extends Component {
         <Row>
           <h1>A magyar országgyűlés felszólalásai 1990 óta</h1>
         </Row>
-          <Route exact path="/" component={Home} />
+          <Route path="/" component={Home} />
       </Grid>
     )
   }

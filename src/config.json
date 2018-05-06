@@ -1,0 +1,4 @@
+{
+    "SEARCH_API": "https://parldata-search.westeurope.cloudapp.azure.com/parldata/_search/template?",
+    "page_size": 20
+}
