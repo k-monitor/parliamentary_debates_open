@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Grid>
         <Row>
-          <Link to="/"><h1>parldata-frontend</h1></Link>
+          <h1>A magyar országgyűlés felszólalásai 1990 óta</h1>
         </Row>
           <Route exact path="/" component={Home} />
       </Grid>

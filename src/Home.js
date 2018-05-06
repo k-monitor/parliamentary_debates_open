@@ -16,13 +16,12 @@ const Home = props => (
       showSpinner={false}
     />
     <Col sm={3}>
-      <h2>Keresés</h2>
-      <h3>Kulcsszó</h3>
+      <h2>Kereső</h2>
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
-      <h3>Felszólalók</h3>
+      <h2>Felszólalók</h2>
       <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
         onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
-      <h3>Dátum</h3>
+      <h2>Dátum</h2>
       <Filter counts={props.search.results.aggregations.terms.buckets.map(x => x.dates.buckets).reduce((a, b) => a.concat(b), [])}
         field_name="date" getLabel={item => item.key_as_string} getValue={item => item.key_as_string}
         onChange={date => props.update_search({...props.search, date_filter: date.date})} filter_value={props.search.date_filter} />
