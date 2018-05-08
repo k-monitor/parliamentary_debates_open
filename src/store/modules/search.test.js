@@ -26,7 +26,7 @@ it('changes current search term', () => {
   return store.dispatch(update_search(term))
     .then(() => {
       const actions = store.getActions();
-      expect(actions).toContainEqual({type: SEARCH_TERM, term });
+      expect(actions).toContainEqual({type: SEARCH_TERM, search: term });
     })
 });
 
@@ -54,7 +54,7 @@ tests.forEach(({term, page}) => {
       "params": query
     }
 
-    return store.dispatch(update_search(term, page))
+    return store.dispatch(update_search({term}, page))
       .then(() => {
         expect(window.fetch).toBeCalledWith(
           `${config.SEARCH_API}`, {

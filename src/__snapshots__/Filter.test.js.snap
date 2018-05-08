@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ul
+  className="filter"
+>
+  <li>
+    <div
+      className="radio"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={false}
+          disabled={false}
+          onChange={[Function]}
+          type="radio"
+        />
+        Összes
+      </label>
+    </div>
+  </li>
+  <li>
+    <div
+      className="radio"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={false}
+          disabled={false}
+          onChange={[Function]}
+          type="radio"
+        />
+        John Doe
+         
+        <b>
+          (
+          3
+          )
+        </b>
+      </label>
+    </div>
+  </li>
+  <li>
+    <div
+      className="radio"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={false}
+          disabled={false}
+          onChange={[Function]}
+          type="radio"
+        />
+        asdfg
+         
+        <b>
+          (
+          1
+          )
+        </b>
+      </label>
+    </div>
+  </li>
+  <li>
+    <div
+      className="radio"
+      style={undefined}
+    >
+      <label
+        title=""
+      >
+        <input
+          checked={false}
+          disabled={false}
+          onChange={[Function]}
+          type="radio"
+        />
+        sdgsdf
+         
+        <b>
+          (
+          1
+          )
+        </b>
+      </label>
+    </div>
+  </li>
+</ul>
+`;

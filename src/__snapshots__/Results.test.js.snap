@@ -12,9 +12,8 @@ exports[`renders correctly 1`] = `
       <a
         href="#"
       >
-        Téma: 
         <b />
-         Felszólaló: 
+         — 
       </a>
       <span
         className="meta"
@@ -47,9 +46,8 @@ exports[`renders correctly 1`] = `
       <a
         href="#"
       >
-        Téma: 
         <b />
-         Felszólaló: 
+         — 
       </a>
       <span
         className="meta"

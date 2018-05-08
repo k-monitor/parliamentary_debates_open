@@ -8,14 +8,9 @@ exports[`renders correctly 1`] = `
     <div
       className="row"
     >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        <h1>
-          parldata-frontend
-        </h1>
-      </a>
+      <h1>
+        A magyar országgyűlés felszólalásai 1990 óta
+      </h1>
     </div>
     <div
       className="row"
@@ -44,11 +39,8 @@ exports[`renders correctly 1`] = `
         className="col-sm-3"
       >
         <h2>
-          Search
+          Kereső
         </h2>
-        <h3>
-          Keyword
-        </h3>
         <input
           className="form-control"
           id={undefined}
@@ -58,10 +50,56 @@ exports[`renders correctly 1`] = `
           type="text"
           value=""
         />
-        <h3>
-          Speakers
-        </h3>
-        <ul />
+        <h2>
+          Felszólalók
+        </h2>
+        <ul
+          className="filter"
+        >
+          <li>
+            <div
+              className="radio"
+              style={undefined}
+            >
+              <label
+                title=""
+              >
+                <input
+                  checked={true}
+                  disabled={false}
+                  onChange={[Function]}
+                  type="radio"
+                />
+                Összes
+              </label>
+            </div>
+          </li>
+        </ul>
+        <h2>
+          Dátum
+        </h2>
+        <ul
+          className="filter"
+        >
+          <li>
+            <div
+              className="radio"
+              style={undefined}
+            >
+              <label
+                title=""
+              >
+                <input
+                  checked={true}
+                  disabled={false}
+                  onChange={[Function]}
+                  type="radio"
+                />
+                Összes
+              </label>
+            </div>
+          </li>
+        </ul>
       </div>
       <div
         className="col-sm-9"

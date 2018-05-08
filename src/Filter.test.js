@@ -10,8 +10,11 @@ import { ConnectedRouter } from 'react-router-redux'
 it('renders correctly', () => {
   const tree = renderer
     .create(<Filter
-        speakers={{"John Doe": true, "Random Name": false}}
-        counts={{"John Doe": 1, "Random Name": 2}} />)
+        counts={[
+          {'key': 'John Doe', 'doc_count': '3'},
+          {'key': 'asdfg', 'doc_count': '1'},
+          {'key': 'sdgsdf', 'doc_count': '1'},
+        ]} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 })
