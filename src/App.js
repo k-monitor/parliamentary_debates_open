@@ -7,6 +7,10 @@ import { Route, Link } from 'react-router-dom'
 import Home from './Home'
 
 class App extends Component {
+  componentWillMount() {
+    document.title = 'A magyar országgyűlés felszólalásai 1990 óta'
+  }
+
   render() {
     return (
       <Grid>
