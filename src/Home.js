@@ -18,13 +18,15 @@ const Home = props => (
     <Col sm={3}>
       <h2>Kereső</h2>
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
-      <h2>Felszólalók</h2>
-      <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
-        onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
-      <h2>Dátum</h2>
-      <Filter counts={props.search.results.aggregations.terms.buckets.map(x => x.dates.buckets).reduce((a, b) => a.concat(b), [])}
-        field_name="date" getLabel={item => item.key_as_string} getValue={item => item.key_as_string}
-        onChange={date => props.update_search({...props.search, date_filter: date.date})} filter_value={props.search.date_filter} />
+    {props.search.results.hits.total > 0 ? (<div>
+        <h2>Felszólalók</h2>
+        <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
+          onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
+        <h2>Dátum</h2>
+        <Filter counts={props.search.results.aggregations.terms.buckets.map(x => x.dates.buckets).reduce((a, b) => a.concat(b), [])}
+          field_name="date" getLabel={item => item.key_as_string} getValue={item => item.key_as_string}
+          onChange={date => props.update_search({...props.search, date_filter: date.date})} filter_value={props.search.date_filter} />
+      </div>) : null}
     </Col>
     <Col sm={9}>
       <Results results={props.search.results} page={props.search.page}

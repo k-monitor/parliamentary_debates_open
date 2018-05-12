@@ -6,7 +6,7 @@ import get_pages from './pagination'
 import config from './config.json'
 
 const Results = ({ results, page, navigate_to_page }) => (
-  <div>
+  results.hits.total > 0 ? (<div>
   <h2>{results.hits.total} találat:</h2>
   {results.hits.hits.map(result => (
     <article className="result" key={ result._id }>
@@ -36,7 +36,7 @@ const Results = ({ results, page, navigate_to_page }) => (
             ))}
         </Pagination>
     </div>
-  </div>
+  </div>) : null
 )
 
 
