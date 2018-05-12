@@ -50,72 +50,10 @@ exports[`renders correctly 1`] = `
           type="text"
           value=""
         />
-        <h2>
-          Felszólalók
-        </h2>
-        <ul
-          className="filter"
-        >
-          <li>
-            <div
-              className="radio"
-              style={undefined}
-            >
-              <label
-                title=""
-              >
-                <input
-                  checked={true}
-                  disabled={false}
-                  onChange={[Function]}
-                  type="radio"
-                />
-                Összes
-              </label>
-            </div>
-          </li>
-        </ul>
-        <h2>
-          Dátum
-        </h2>
-        <ul
-          className="filter"
-        >
-          <li>
-            <div
-              className="radio"
-              style={undefined}
-            >
-              <label
-                title=""
-              >
-                <input
-                  checked={true}
-                  disabled={false}
-                  onChange={[Function]}
-                  type="radio"
-                />
-                Összes
-              </label>
-            </div>
-          </li>
-        </ul>
       </div>
       <div
         className="col-sm-9"
-      >
-        <div>
-          <h2>
-            0
-             találat:
-          </h2>
-          <div>
-            <ul
-              className="pagination"
-            />
-          </div>
-        </div>
-      </div>
+      />
     </div>
   </div>
 </div>
