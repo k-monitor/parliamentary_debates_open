@@ -31,12 +31,16 @@ const Results = ({ results, page, navigate_to_page }) => (
     <div>
         <Pagination>
             {get_pages(config.page_size, results.hits.total)
-              .filter(number => Math.min(number, Math.abs(number - page), Math.abs(Math.ceil(results.hits.total / config.page_size)- number)) < 4)
+              .filter(number => Math.min(number, Math.abs(number - page), Math.abs(Math.ceil(results.hits.total / config.page_size)- number)) < 3)
+              .reduce((a, b) => a.length === 0 ? a.concat([b]) : (a.slice(-1)[0] + 1 === b ? a.concat([b]) : a.concat(['...', b])), [])
               .map(number => (
-                <Pagination.Item key={number} active={number === page}
-                  onClick={() => navigate_to_page(number)}>
-                    {number + 1}
-                </Pagination.Item>
+                number === '...' ? (
+                  <Pagination.Ellipsis key={Math.random()} />
+                ) : (
+                  <Pagination.Item key={number} active={number === page}
+                    onClick={() => navigate_to_page(number)}>
+                      {number + 1}
+                  </Pagination.Item>)
             ))}
         </Pagination>
     </div>
