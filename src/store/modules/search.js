@@ -29,12 +29,13 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_TERM:
-      console.log(action.search)
       return {
         ...state,
         term: action.search.term,
         speaker_filter: action.search.speaker_filter,
         date_filter: action.search.date_filter,
+        start_date: action.search.start_date,
+        end_date: action.search.end_date,
         loading: true
       }
 
@@ -87,6 +88,16 @@ export const update_search = (search, page = 0) => {
               search.date_filter
                 ? {'filter.date': search.date_filter}
                 : {}
+            ),
+            ...(
+              search.start_date
+                ? {'filter.date.from': search.start_date}
+                : {'filter.date.from': '1900.01.01.'}
+            ),
+            ...(
+              search.end_date
+                ? {'filter.date.to': search.end_date}
+                : {'filter.date.to': '2500.01.01.'}
             ),
           }
         }),

@@ -7,6 +7,12 @@ import Results from './Results.js'
 import Filter from './Filter.js'
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar'
+import DatePicker from 'react-16-bootstrap-date-picker'
+
+const parseDate = string =>
+  string
+    ? string.replace('.', '-').replace('.', '-') + "T12:00:00.000Z"
+    : string
 
 const Home = props => (
   <Row>
@@ -18,14 +24,15 @@ const Home = props => (
     <Col sm={3}>
       <h2>Kereső</h2>
       <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
-    {props.search.results.hits.total > 0 ? (<div>
+    {props.search.term.length > 3 ? (<div>
         <h2>Felszólalók</h2>
         <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
           onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
         <h2>Dátum</h2>
-        <Filter counts={props.search.results.aggregations.terms.buckets.map(x => x.dates.buckets).reduce((a, b) => a.concat(b), [])}
-          field_name="date" getLabel={item => item.key_as_string} getValue={item => item.key_as_string}
-          onChange={date => props.update_search({...props.search, date_filter: date.date})} filter_value={props.search.date_filter} />
+        <h3>Ettől a naptól:</h3>
+        <DatePicker value={parseDate(props.search.start_date)} onChange={(_, value) => props.update_search({...props.search, start_date: value})} dateFormat="YYYY.MM.DD." />
+        <h3>Ettől a napig:</h3>
+        <DatePicker value={parseDate(props.search.end_date)} onChange={(_, value) => props.update_search({...props.search, end_date: value})} dateFormat="YYYY.MM.DD." />
       </div>) : null}
     </Col>
     <Col sm={9}>
