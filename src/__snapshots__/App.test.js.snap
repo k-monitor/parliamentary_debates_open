@@ -80,6 +80,14 @@ exports[`renders correctly 1`] = `
                 dátum szerinti pontosítással az év (YYYY), a hónap (MM) és a nap (DD) megadásával, vagy a mezőbe kattintva a legördülő naptár segítségével.
               </li>
             </ul>
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Elrejtés
+            </button>
           </div>
         </div>
       </div>

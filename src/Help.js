@@ -1,8 +1,8 @@
 import React from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel, Button } from 'react-bootstrap';
 
-const Help = () => (
-  <Panel bsStyle="info">
+const Help = (props) => (
+  props.show ? (<Panel bsStyle="info">
     <Panel.Body>
       <p>Ez az oldal azért jött létre, hogy az újságírók számára könnyebben kereshetővé váljanak a magyar országgyűlés felszólalásai 1990-től napjainking.</p>
 
@@ -14,8 +14,9 @@ const Help = () => (
         <li>egy vagy több felszólaló kiválasztásával;</li>
         <li>dátum szerinti pontosítással az év (YYYY), a hónap (MM) és a nap (DD) megadásával, vagy a mezőbe kattintva a legördülő naptár segítségével.</li>
       </ul>
+      <Button bsStyle="primary" onClick={props.toggle}>Elrejtés</Button>
     </Panel.Body>
-  </Panel>
+  </Panel>) : null
 );
 
 export default Help;

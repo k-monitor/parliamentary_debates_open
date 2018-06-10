@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, FormControl } from 'react-bootstrap';
 import {update_search} from './store/modules/search'
+import {toggle} from './store/modules/help'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Results from './Results.js'
@@ -37,7 +38,7 @@ const Home = props => (
       </div>) : null}
     </Col>
     <Col sm={9}>
-      <Help />
+      <Help show={props.help.show} toggle={props.toggle}/>
       <Results results={props.search.results} page={props.search.page}
         navigate_to_page={n => props.update_search(props.search, n)} />
     </Col>
@@ -46,10 +47,11 @@ const Home = props => (
 
 const mapStateToProps = state => ({
   search: state.search,
+  help: state.help
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  update_search
+  update_search, toggle
 }, dispatch)
 
 export default connect(
