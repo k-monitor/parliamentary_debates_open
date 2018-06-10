@@ -47,6 +47,8 @@ tests.forEach(({term, page}) => {
       "q": term,
       "size": config.page_size,
       "from": from,
+      'filter.date.from': '1900.01.01.',
+      'filter.date.to': '2500.01.01.',
     }
 
     const payload = {
