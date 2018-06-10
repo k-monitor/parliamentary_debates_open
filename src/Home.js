@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Results from './Results.js'
 import Filter from './Filter.js'
+import Help from './Help.js'
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar'
 import DatePicker from 'react-16-bootstrap-date-picker'
@@ -36,6 +37,7 @@ const Home = props => (
       </div>) : null}
     </Col>
     <Col sm={9}>
+      <Help />
       <Results results={props.search.results} page={props.search.page}
         navigate_to_page={n => props.update_search(props.search, n)} />
     </Col>
