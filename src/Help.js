@@ -16,7 +16,9 @@ const Help = (props) => (
       </ul>
       <Button bsStyle="primary" onClick={props.toggle}>Elrejtés</Button>
     </Panel.Body>
-  </Panel>) : null
+  </Panel>) : (
+    <Button onClick={props.toggle}>Súgó mutatása</Button>
+  )
 );
 
 export default Help;
