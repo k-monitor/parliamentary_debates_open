@@ -15,9 +15,8 @@ class App extends Component {
     return (
       <Grid>
         <Row>
-          <h1>A magyar országgyűlés felszólalásai 1990 óta</h1>
+          <h1>Az oldal technikai okok miatt várhatóan Augusztus 20-áig nem üzemel.</h1>
         </Row>
-          <Route path="/" component={Home} />
       </Grid>
     )
   }
