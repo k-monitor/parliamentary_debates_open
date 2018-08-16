@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Grid>
         <Row>
-          <h1>Az oldal technikai okok miatt nem üzemel.</h1>
+          <h1>Az oldal technikai okok miatt várhatóan Augusztus 20-áig nem üzemel.</h1>
         </Row>
       </Grid>
     )
