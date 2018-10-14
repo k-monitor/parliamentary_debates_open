@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, FormControl } from 'react-bootstrap';
-import {update_search} from './store/modules/search'
+import {navigate_to_search} from './store/modules/search'
 import {toggle} from './store/modules/help'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -25,22 +25,22 @@ const Home = props => (
     />
     <Col sm={3}>
       <h2>Kereső</h2>
-      <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.update_search({...props.search, term: event.target.value})} />
-    {props.search.term.length > 3 ? (<div>
+      <DelayInput minLength={3} delayTimeout={300} element={FormControl} onChange={event => props.navigate_to_search({...props.search, term: event.target.value || ""})} />
+    {props.search.term && props.search.term.length > 3 ? (<div>
         <h2>Felszólalók</h2>
         <Filter counts={props.search.results.aggregations.speakers.buckets} field_name="speaker"
-          onChange={speaker => props.update_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
+          onChange={speaker => props.navigate_to_search({...props.search, speaker_filter: speaker.speaker})} filter_value={props.search.speaker_filter} />
         <h2>Dátum</h2>
         <h3>Ettől a naptól:</h3>
-        <DatePicker value={parseDate(props.search.start_date)} onChange={(_, value) => props.update_search({...props.search, start_date: value})} dateFormat="YYYY.MM.DD." />
-        <h3>Ettől a napig:</h3>
-        <DatePicker value={parseDate(props.search.end_date)} onChange={(_, value) => props.update_search({...props.search, end_date: value})} dateFormat="YYYY.MM.DD." />
+        <DatePicker value={parseDate(props.search.start_date)} onChange={(_, value) => props.navigate_to_search({...props.search, start_date: value})} dateFormat="YYYY.MM.DD." />
+        <h3>Eddig a napig:</h3>
+        <DatePicker value={parseDate(props.search.end_date)} onChange={(_, value) => props.navigate_to_search({...props.search, end_date: value})} dateFormat="YYYY.MM.DD." />
       </div>) : null}
     </Col>
     <Col sm={9}>
       <Help show={props.help.show} toggle={props.toggle}/>
       <Results results={props.search.results} page={props.search.page}
-        navigate_to_page={n => props.update_search(props.search, n)} />
+        navigate_to_page={n => props.navigate_to_search(props.search, n)} />
     </Col>
   </Row>
 )
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  update_search, toggle
+  navigate_to_search, toggle
 }, dispatch)
 
 export default connect(

@@ -5,6 +5,7 @@
   "homepage": "https://k-monitor.github.io/parliamentary_debates_open/",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "build-url": "^1.2.0",
     "create-react-class": "^15.6.3",
     "lodash": "^4.17.5",
     "react": "^16.3.1",
@@ -20,7 +21,8 @@
     "react-scripts": "1.1.1",
     "react-test-renderer": "^16.2.0",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "redux-url": "^1.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

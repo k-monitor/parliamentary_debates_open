@@ -1,9 +1,11 @@
-import config from '../../config.json'
+import config from '../../config.json';
+import {navigate} from 'redux-url';
+import buildUrl from 'build-url';
 
-export const SEARCH_TERM = 'search/SEARCH_TERM'
-export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS'
-export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER'
-export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER'
+export const SEARCH_TERM = 'search/SEARCH_TERM';
+export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS';
+export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER';
+export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER';
 
 const initialState = {
   loading: false,
@@ -15,7 +17,7 @@ const initialState = {
     },
     hits: {
       total: 0,
-      hits: []
+      hits: [],
     },
   },
   speakers: {},
@@ -24,7 +26,7 @@ const initialState = {
   date_filter: '',
   page: 0,
   topics: {},
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -36,8 +38,8 @@ export default (state = initialState, action) => {
         date_filter: action.search.date_filter,
         start_date: action.search.start_date,
         end_date: action.search.end_date,
-        loading: true
-      }
+        loading: true,
+      };
 
     case SEARCH_SUCCESS:
       return {
@@ -46,65 +48,80 @@ export default (state = initialState, action) => {
         page: action.page,
         loading: false,
         speakers: {
-          ...action.results.aggregations.speakers.buckets
+          ...action.results.aggregations.speakers.buckets,
         },
         terms: {
-          ...action.results.aggregations.terms.buckets
-        }
-      }
+          ...action.results.aggregations.terms.buckets,
+        },
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export const update_search = (search, page = 0) => {
+export const navigate_to_search = (search, n) => {
+  let search_ = Object.assign({}, search);
+  delete search_.loading;
+  delete search_.results;
+  delete search_.terms;
+  delete search_.speakers;
+  delete search_.topics;
+  delete search_.date_filter;
+  if (search_.start_date === null) delete search_.start_date
+  if (search_.end_date === null) delete search_.end_date
+  if (!search_.term) search_.term = ""
   return dispatch => {
-    dispatch({
-      type: SEARCH_TERM, search
-    })
-
-    const start = page * config.page_size
-
-    const url =
-      `${config.SEARCH_API}`
-
-    return fetch(
-      url, 
-      {
-        'method': 'POST',
-        'body': JSON.stringify({
-          "id": "filtered_query_v2",
-          "params": {
-            'q': search.term,
-            'size': config.page_size,
-            'from': start,
-            ...(
-              search.speaker_filter
-                ? {'filter.speaker': search.speaker_filter}
-                : {}
-            ),
-            ...(
-              search.date_filter
-                ? {'filter.date': search.date_filter}
-                : {}
-            ),
-            ...(
-              search.start_date
-                ? {'filter.date.from': search.start_date}
-                : {'filter.date.from': '1900.01.01.'}
-            ),
-            ...(
-              search.end_date
-                ? {'filter.date.to': search.end_date}
-                : {'filter.date.to': '2500.01.01.'}
-            ),
-          }
+    dispatch(
+      navigate(
+          buildUrl('/parliamentary_debates_open/', {
+          path: '',
+          queryParams: {
+            ...search_,
+            page: n,
+          },
         }),
-        "headers": {"content-type": "application/json"}
-      }
-    )
+      ),
+    );
+  };
+};
+
+export const update_search = search => {
+  return dispatch => {
+    console.log('update_search', search);
+    const page = search.page;
+    dispatch({
+      type: SEARCH_TERM,
+      search,
+    });
+
+    const start = page * config.page_size;
+
+    const url = `${config.SEARCH_API}`;
+
+    return fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        id: 'filtered_query_v2',
+        params: {
+          q: search.term,
+          size: config.page_size,
+          from: start,
+          ...(search.speaker_filter
+            ? {'filter.speaker': search.speaker_filter}
+            : {}),
+          ...(search.date_filter ? {'filter.date': search.date_filter} : {}),
+          ...(search.start_date
+            ? {'filter.date.from': search.start_date}
+            : {'filter.date.from': '1900.01.01.'}),
+          ...(search.end_date
+            ? {'filter.date.to': search.end_date}
+            : {'filter.date.to': '2500.01.01.'}),
+        },
+      }),
+      headers: {'content-type': 'application/json'},
+    })
       .then(response => response.json())
-      .then(results => dispatch({ type: SEARCH_SUCCESS, page, results }))
-  }
-}
+      .then(results => dispatch({type: SEARCH_SUCCESS, page, results}));
+  };
+};
