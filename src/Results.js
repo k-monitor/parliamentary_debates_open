@@ -27,7 +27,7 @@ const Results = ({results, page, navigate_to_page}) =>
           data={bin(5184000000 * 3)(result_count_by_date(results))}
           margin={{top: 5, right: 20, bottom: 80, left: 5}}>
           <Area
-            type="basis"
+            type="natural"
             dataKey="count"
             name="Felszólalások száma"
             fill="#8884d8"
