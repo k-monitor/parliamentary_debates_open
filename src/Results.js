@@ -2,7 +2,12 @@ import React from 'react';
 import {Pagination} from 'react-bootstrap';
 import get_pages from './pagination';
 import config from './config.json';
-import {result_count_by_date, bin} from './transformations';
+import {
+  result_count_by_date,
+  bin,
+  formatBinName,
+  formatBinNameShort,
+} from './transformations';
 import {AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip} from 'recharts';
 
 const joinHighlightParts = parts => parts.join('&nbsp;[&hellip;]&nbsp;');
@@ -17,6 +22,8 @@ const getHighlightParts = highlight =>
 const formatHighlight = highlight =>
   joinHighlightParts(getHighlightParts(highlight));
 
+const binsize = 5184000000 * 3;
+
 const Results = ({results, page, navigate_to_page}) =>
   results.hits.total > 0 ? (
     <div>
@@ -24,7 +31,7 @@ const Results = ({results, page, navigate_to_page}) =>
         <AreaChart
           width={600}
           height={300}
-          data={bin(5184000000 * 3)(result_count_by_date(results))}
+          data={bin(binsize)(result_count_by_date(results))}
           margin={{top: 5, right: 20, bottom: 80, left: 5}}>
           <Area
             type="monotone"
@@ -32,14 +39,30 @@ const Results = ({results, page, navigate_to_page}) =>
             name="Felszólalások száma"
             fill="#8884d8"
             dot={false}
+            activeDot={false}
             fillOpacity={0.8}
             strokeOpacity={0}
             isAnimationActive={false}
           />
           <CartesianGrid stroke="#8884d8" strokeDasharray="5 5" opacity={0.4} />
-          <XAxis dataKey="bucket" angle={-45} textAnchor="end" />
+          <XAxis
+            type="number"
+            dataKey="timestamp"
+            angle={-45}
+            textAnchor="end"
+            domain={['dataMin', 'dataMax']}
+            minTickGap={-35}
+            tickCount={100}
+            ticks={bin(binsize)(result_count_by_date(results)).map(
+              i => i.timestamp,
+            )}
+            tickFormatter={formatBinNameShort(binsize)}
+          />
           <YAxis />
-          <Tooltip cursor={{stroke: 'red', strokeWidth: 1}} />
+          <Tooltip
+            cursor={{stroke: 'red', strokeWidth: 1}}
+            labelFormatter={formatBinName(binsize)}
+          />
         </AreaChart>
       </div>
       <h2>{results.hits.total} találat:</h2>

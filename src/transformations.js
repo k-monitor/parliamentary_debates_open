@@ -26,15 +26,12 @@ export const bin = binsize => data => {
   const counts = Object.fromEntries(
     data.map(item => [item.timestamp, item.count]),
   );
-  console.log('counts', Object.values(counts).reduce((a, b) => a + b, 0));
   const filledData = Array.from(
     new Set([..._.range(start, end, binsize), ...Object.keys(counts)]),
   ).map(timestamp => ({
     timestamp: timestamp * 1,
     count: counts[timestamp * 1] || 0,
   }));
-
-  console.log('filledData', filledData);
 
   const value = Object.entries(
     filledData
@@ -55,42 +52,57 @@ export const bin = binsize => data => {
       }, {}),
   )
     .sort((a, b) => a[0] - b[0])
-    .map(a => a[1])
-    .map(item => {
-      const binStart = new Date(
-        Math.floor(item.timestamp * 1 / binsize) * binsize,
-      );
-      const binEnd = new Date(
-        Math.floor(item.timestamp * 1 / binsize) * binsize + binsize,
-      );
-      const months = [
-        'Jan',
-        'Feb',
-        'Már',
-        'Ápr',
-        'Máj',
-        'Jún',
-        'Júl',
-        'Aug',
-        'Szep',
-        'Okt',
-        'Nov',
-        'Dec',
-      ];
-      return {
-        bucket: `${binStart.getFullYear()} ${
-          months[binStart.getMonth()]
-        } ${binStart.getDate()} - ${
-          months[binEnd.getMonth()]
-        } ${binEnd.getDate()}`,
-        ...item,
-      };
-    });
-
-  console.log(value.reduce((a, b) => a + b.count, 0));
-  console.log(data.reduce((a, b) => a + b.count, 0));
-
-  console.log(value);
+    .map(a => a[1]);
 
   return value;
+};
+
+export const formatBinName = binsize => timestamp => {
+  const binStart = new Date(Math.floor(timestamp * 1 / binsize) * binsize);
+  const binEnd = new Date(
+    Math.floor(timestamp * 1 / binsize) * binsize + binsize,
+  );
+  const months = [
+    'Jan',
+    'Feb',
+    'Már',
+    'Ápr',
+    'Máj',
+    'Jún',
+    'Júl',
+    'Aug',
+    'Szep',
+    'Okt',
+    'Nov',
+    'Dec',
+  ];
+  return `${binStart.getFullYear()} ${
+    months[binStart.getMonth()]
+  } ${binStart.getDate()} - ${months[binEnd.getMonth()]} ${binEnd.getDate()}`;
+};
+
+export const formatBinNameShort = binsize => timestamp => {
+  const binMiddle = new Date(
+    Math.floor(
+      (Math.floor(timestamp * 1 / binsize) * binsize +
+        binsize +
+        Math.floor(timestamp * 1 / binsize) * binsize) /
+        2,
+    ),
+  );
+  const months = [
+    'Jan',
+    'Feb',
+    'Már',
+    'Ápr',
+    'Máj',
+    'Jún',
+    'Júl',
+    'Aug',
+    'Szep',
+    'Okt',
+    'Nov',
+    'Dec',
+  ];
+  return `${binMiddle.getFullYear()} ${months[binMiddle.getMonth()]}`;
 };
