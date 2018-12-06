@@ -1,9 +1,9 @@
 import React from 'react';
-import BillboardChart from 'react-billboardjs';
-import {counts} from './transformations';
-import {Row, Col, Pagination, Button} from 'react-bootstrap';
+import {Pagination} from 'react-bootstrap';
 import get_pages from './pagination';
 import config from './config.json';
+import {result_count_by_date, bin} from './transformations';
+import {AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip} from 'recharts';
 
 const joinHighlightParts = parts => parts.join('&nbsp;[&hellip;]&nbsp;');
 const getHighlightPart = input =>
@@ -20,6 +20,28 @@ const formatHighlight = highlight =>
 const Results = ({results, page, navigate_to_page}) =>
   results.hits.total > 0 ? (
     <div>
+      <div style={{margin: 'auto', width: 600}}>
+        <AreaChart
+          width={600}
+          height={300}
+          data={bin(5184000000 * 3)(result_count_by_date(results))}
+          margin={{top: 5, right: 20, bottom: 80, left: 5}}>
+          <Area
+            type="linear"
+            dataKey="count"
+            name="Felszólalások száma"
+            fill="#8884d8"
+            dot={false}
+            fillOpacity={0.8}
+            strokeOpacity={0}
+            isAnimationActive={false}
+          />
+          <CartesianGrid stroke="#8884d8" strokeDasharray="5 5" opacity={0.4} />
+          <XAxis dataKey="bucket" angle={-45} textAnchor="end" />
+          <YAxis />
+          <Tooltip cursor={{stroke: 'red', strokeWidth: 1}} />
+        </AreaChart>
+      </div>
       <h2>{results.hits.total} találat:</h2>
       {results.hits.hits.map(result => (
         <article className="result" key={result._id}>
@@ -39,7 +61,9 @@ const Results = ({results, page, navigate_to_page}) =>
           </h1>
           <p
             dangerouslySetInnerHTML={{
-              __html: formatHighlight(result.highlight) || result._source.text.slice(0, 150),
+              __html:
+                formatHighlight(result.highlight) ||
+                result._source.text.slice(0, 150),
             }}
           />
           <span className="source">
