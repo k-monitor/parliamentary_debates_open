@@ -1,4 +1,10 @@
 import _ from 'lodash';
+function fromEntries(iterable) {
+  return [...iterable].reduce(
+    (obj, {0: key, 1: val}) => Object.assign(obj, {[key]: val}),
+    {},
+  );
+}
 
 export const buckets_to_map = buckets =>
   buckets.length
@@ -23,9 +29,7 @@ export const result_count_by_date = results =>
 export const bin = binsize => data => {
   const start = Math.min(...data.map(({timestamp}) => timestamp));
   const end = Math.max(...data.map(({timestamp}) => timestamp));
-  const counts = Object.fromEntries(
-    data.map(item => [item.timestamp, item.count]),
-  );
+  const counts = fromEntries(data.map(item => [item.timestamp, item.count]));
   const filledData = Array.from(
     new Set([..._.range(start, end, binsize), ...Object.keys(counts)]),
   ).map(timestamp => ({
