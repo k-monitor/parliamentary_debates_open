@@ -84,7 +84,7 @@ export const formatBinName = binsize => timestamp => {
 
   return `${binStart.getFullYear()}. ${
     months[binStart.getMonth()]
-  } ${binStart.getDate()}. - ${binEnd.getFullYear()}. ${
+  } ${binStart.getDate()}. – ${binEnd.getFullYear()}. ${
     months[binEnd.getMonth()]
   } ${binEnd.getDate()}.`;
 };
