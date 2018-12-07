@@ -67,18 +67,18 @@ export const formatBinName = binsize => timestamp => {
     Math.floor(timestamp * 1 / binsize) * binsize + binsize,
   );
   const months = [
-    'Jan',
-    'Feb',
-    'Már',
-    'Ápr',
-    'Máj',
-    'Jún',
-    'Júl',
-    'Aug',
-    'Szep',
-    'Okt',
-    'Nov',
-    'Dec',
+    'jan',
+    'feb',
+    'már',
+    'ápr',
+    'máj',
+    'jún',
+    'júl',
+    'aug',
+    'szep',
+    'okt',
+    'nov',
+    'dec',
   ];
   return `${binStart.getFullYear()} ${
     months[binStart.getMonth()]
