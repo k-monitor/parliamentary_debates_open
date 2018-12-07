@@ -44,7 +44,6 @@ const Results = ({results, page, navigate_to_page}) =>
             strokeOpacity={0}
             isAnimationActive={false}
           />
-          <CartesianGrid stroke="#8884d8" strokeDasharray="5 5" opacity={0.4} />
           <XAxis
             type="number"
             dataKey="timestamp"
