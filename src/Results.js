@@ -61,6 +61,7 @@ const Results = ({results, page, navigate_to_page}) =>
           <Tooltip
             cursor={{stroke: 'red', strokeWidth: 1}}
             labelFormatter={formatBinName(binsize)}
+            separator=": "
           />
         </AreaChart>
       </div>
