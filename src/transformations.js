@@ -61,25 +61,27 @@ export const bin = binsize => data => {
   return value;
 };
 
+const months = [
+  'jan',
+  'feb',
+  'már',
+  'ápr',
+  'máj',
+  'jún',
+  'júl',
+  'aug',
+  'szep',
+  'okt',
+  'nov',
+  'dec',
+];
+
 export const formatBinName = binsize => timestamp => {
   const binStart = new Date(Math.floor(timestamp * 1 / binsize) * binsize);
   const binEnd = new Date(
     Math.floor(timestamp * 1 / binsize) * binsize + binsize,
   );
-  const months = [
-    'jan',
-    'feb',
-    'már',
-    'ápr',
-    'máj',
-    'jún',
-    'júl',
-    'aug',
-    'szep',
-    'okt',
-    'nov',
-    'dec',
-  ];
+
   return `${binStart.getFullYear()} ${
     months[binStart.getMonth()]
   } ${binStart.getDate()} - ${months[binEnd.getMonth()]} ${binEnd.getDate()}`;
@@ -94,19 +96,5 @@ export const formatBinNameShort = binsize => timestamp => {
         2,
     ),
   );
-  const months = [
-    'Jan',
-    'Feb',
-    'Már',
-    'Ápr',
-    'Máj',
-    'Jún',
-    'Júl',
-    'Aug',
-    'Szep',
-    'Okt',
-    'Nov',
-    'Dec',
-  ];
   return `${binMiddle.getFullYear()} ${months[binMiddle.getMonth()]}`;
 };
