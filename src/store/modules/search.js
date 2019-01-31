@@ -4,6 +4,8 @@ import buildUrl from 'build-url';
 
 export const SEARCH_TERM = 'search/SEARCH_TERM';
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS';
+export const OPEN_MODAL = 'search/OPEN_MODAL';
+export const CLOSE_MODAL = 'search/CLOSE_MODAL';
 export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER';
 export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER';
 
@@ -26,6 +28,7 @@ const initialState = {
   date_filter: '',
   page: 0,
   topics: {},
+  hitOpen: null,
 };
 
 export default (state = initialState, action) => {
@@ -39,11 +42,13 @@ export default (state = initialState, action) => {
         start_date: action.search.start_date,
         end_date: action.search.end_date,
         loading: true,
+        hitOpen: null,
       };
 
     case SEARCH_SUCCESS:
       return {
         ...state,
+        hitOpen: null,
         results: action.results,
         page: action.page,
         loading: false,
@@ -54,6 +59,20 @@ export default (state = initialState, action) => {
           ...action.results.aggregations.terms.buckets,
         },
       };
+
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        hitOpen: null,
+      };
+    }
+
+    case OPEN_MODAL: {
+      return {
+        ...state,
+        hitOpen: action.hitOpen,
+      };
+    }
 
     default:
       return state;
@@ -68,13 +87,13 @@ export const navigate_to_search = (search, n) => {
   delete search_.speakers;
   delete search_.topics;
   delete search_.date_filter;
-  if (search_.start_date === null) delete search_.start_date
-  if (search_.end_date === null) delete search_.end_date
-  if (!search_.term) search_.term = ""
+  if (search_.start_date === null) delete search_.start_date;
+  if (search_.end_date === null) delete search_.end_date;
+  if (!search_.term) search_.term = '';
   return dispatch => {
     dispatch(
       navigate(
-          buildUrl('/parliamentary_debates_open/', {
+        buildUrl('/parliamentary_debates_open/', {
           path: '',
           queryParams: {
             ...search_,
@@ -88,7 +107,6 @@ export const navigate_to_search = (search, n) => {
 
 export const update_search = search => {
   return dispatch => {
-    console.log('update_search', search);
     const page = search.page;
     dispatch({
       type: SEARCH_TERM,
@@ -124,4 +142,19 @@ export const update_search = search => {
       .then(response => response.json())
       .then(results => dispatch({type: SEARCH_SUCCESS, page, results}));
   };
+};
+
+export const open_modal = hitOpen => dispatch => {
+  console.log('OPEN_MODAL', hitOpen);
+  dispatch({
+    type: OPEN_MODAL,
+    hitOpen,
+  });
+};
+
+export const close_modal = () => dispatch => {
+  console.log('CLOSE_MODAL');
+  dispatch({
+    type: CLOSE_MODAL,
+  });
 };

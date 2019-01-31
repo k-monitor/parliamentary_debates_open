@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pagination} from 'react-bootstrap';
+import {Pagination, Modal, Button} from 'react-bootstrap';
 import get_pages from './pagination';
 import config from './config.json';
 import {
@@ -24,7 +24,14 @@ const formatHighlight = highlight =>
 
 const binsize = 5184000000 * 3;
 
-const Results = ({results, page, navigate_to_page}) =>
+const Results = ({
+  results,
+  page,
+  navigate_to_page,
+  hitOpen,
+  open_modal,
+  close_modal,
+}) =>
   results.hits.total > 0 ? (
     <div>
       <div style={{margin: 'auto', width: 600}}>
@@ -67,10 +74,15 @@ const Results = ({results, page, navigate_to_page}) =>
         </AreaChart>
       </div>
       <h2>{results.hits.total} találat:</h2>
-      {results.hits.hits.map(result => (
+      {results.hits.hits.map((result, index) => (
         <article className="result" key={result._id}>
           <h1>
-            <a href="#">
+            <a
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                open_modal(index);
+              }}>
               {result._source.speaker} &mdash;{' '}
               <b>
                 {Array.isArray(result._source.topic)
@@ -132,6 +144,38 @@ const Results = ({results, page, navigate_to_page}) =>
             )}
         </Pagination>
       </div>
+
+      <Modal show={hitOpen !== null} onHide={close_modal}>
+        {hitOpen !== null && (
+          <React.Fragment>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {results.hits.hits[hitOpen]._source.speaker} &mdash;
+                <b>
+                  {Array.isArray(results.hits.hits[hitOpen]._source.topic)
+                    ? results.hits.hits[hitOpen]._source.topic.join(', ')
+                    : results.hits.hits[hitOpen]._source.topic}
+                </b>
+              </Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>
+                {results.hits.hits[hitOpen]._source.date}, ({
+                  results.hits.hits[hitOpen]._source.session
+                }, {results.hits.hits[hitOpen]._source.sitting_type})
+              </p>
+              <p>{results.hits.hits[hitOpen]._source.text}</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="primary" onClick={close_modal}>
+                Bezárás
+              </Button>
+            </Modal.Footer>
+          </React.Fragment>
+        )}
+      </Modal>
     </div>
   ) : null;
 
