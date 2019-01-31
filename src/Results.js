@@ -37,14 +37,15 @@ const Results = ({results, page, navigate_to_page}) =>
             type="monotone"
             dataKey="count"
             name="Felszólalások száma"
-            fill="#8884d8"
+            fill="#ebebeb"
             dot={false}
             activeDot={false}
-            fillOpacity={0.8}
+            fillOpacity={1}
             strokeOpacity={0}
             isAnimationActive={false}
           />
           <XAxis
+            tick={{fill: '#ebebeb'}}
             type="number"
             dataKey="timestamp"
             angle={-45}
@@ -57,7 +58,7 @@ const Results = ({results, page, navigate_to_page}) =>
             )}
             tickFormatter={formatBinNameShort(binsize)}
           />
-          <YAxis />
+          <YAxis tick={{fill: '#ebebeb'}} />
           <Tooltip
             cursor={{stroke: 'red', strokeWidth: 1}}
             labelFormatter={formatBinName(binsize)}

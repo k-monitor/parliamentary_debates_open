@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 import 'react-loading-bar/dist/index.css';
 import {Grid, Row} from 'react-bootstrap';
 import Home from './Home';

@@ -1,3 +1,5 @@
+@import '~bootswatch/superhero/bootstrap.css';
+
 .App {
   text-align: center;
 }
@@ -23,22 +25,29 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .result {
+  background: #ffffff1a;
+  padding: .1em .7em;
+  padding-bottom: .6em;
   margin-bottom: 3.5rem;
 }
 
 .result em {
-  background: yellow;
+  background: #ff03;
 }
 
 .result .meta {
   float: right;
   color: gray;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .result h1 {
@@ -46,7 +55,7 @@
 }
 
 .result .source {
-  font-size: .9em;
+  font-size: 0.9em;
   color: gray;
 }
 
