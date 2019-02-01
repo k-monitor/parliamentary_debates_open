@@ -68,6 +68,7 @@ const Results = ({
           <YAxis tick={{fill: '#ebebeb'}} />
           <Tooltip
             cursor={{stroke: 'red', strokeWidth: 1}}
+            labelStyle={{color: 'black'}}
             labelFormatter={formatBinName(binsize)}
             separator=": "
           />
