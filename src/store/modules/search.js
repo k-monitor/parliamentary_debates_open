@@ -145,7 +145,6 @@ export const update_search = search => {
 };
 
 export const open_modal = hitOpen => dispatch => {
-  console.log('OPEN_MODAL', hitOpen);
   dispatch({
     type: OPEN_MODAL,
     hitOpen,
@@ -153,7 +152,6 @@ export const open_modal = hitOpen => dispatch => {
 };
 
 export const close_modal = () => dispatch => {
-  console.log('CLOSE_MODAL');
   dispatch({
     type: CLOSE_MODAL,
   });

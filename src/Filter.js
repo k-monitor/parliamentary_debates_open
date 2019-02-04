@@ -14,7 +14,7 @@ const Filter = ({
     <li key="">
       <FormCheck
         type="radio"
-        onChange={event => onChange({[field_name]: ''})}
+        onChange={() => onChange({[field_name]: ''})}
         checked={filter_value === ''}
         label="Összes"
       />
@@ -23,7 +23,7 @@ const Filter = ({
       <li key={item.key}>
         <FormCheck
           type="radio"
-          onChange={event => onChange({[field_name]: getValue(item)})}
+          onChange={() => onChange({[field_name]: getValue(item)})}
           checked={getValue(item) === filter_value}
           label={
             <>

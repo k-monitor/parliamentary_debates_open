@@ -6,7 +6,7 @@ import {Container, Row} from 'react-bootstrap';
 import Home from './Home';
 
 class App extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     document.title = 'A magyar országgyűlés felszólalásai 1990 óta';
   }
 

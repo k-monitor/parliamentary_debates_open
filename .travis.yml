@@ -7,6 +7,7 @@ install:
 script:
   - yarn test
   - CI=false yarn build
+  - yarn eslint
 after_script:
   - yarn now-travis
 deploy:
