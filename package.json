@@ -7,24 +7,24 @@
     "bootstrap": "3.3.7",
     "bootstrap-sass": "3.3.7",
     "bootswatch": "3.3.7",
-    "build-url": "^1.2.0",
+    "build-url": "^1.3.2",
     "create-react-class": "^15.6.3",
-    "lodash": "^4.17.5",
-    "react": "^16.3.1",
+    "lodash": "^4.17.11",
+    "react": "^16.7.0",
     "react-16-bootstrap-date-picker": "^5.1.2",
     "react-billboardjs": "^1.3.0",
     "react-bootstrap": "0.32.4",
     "react-delay-input": "^4.0.4",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.7.0",
     "react-loading-bar": "0.0.7",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "1.1.1",
-    "react-test-renderer": "^16.2.0",
-    "recharts": "^1.4.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
+    "react-scripts": "2.1.3",
+    "react-test-renderer": "^16.7.0",
+    "recharts": "^1.4.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "redux-url": "^1.2.3"
   },
   "scripts": {
@@ -36,12 +36,18 @@
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "gh-pages": "^1.1.0",
-    "redux-mock-store": "^1.5.1"
+    "gh-pages": "^2.0.1",
+    "redux-mock-store": "^1.5.3"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
