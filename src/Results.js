@@ -8,7 +8,7 @@ import {
   formatBinName,
   formatBinNameShort,
 } from './transformations';
-import {AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip} from 'recharts';
+import {AreaChart, Area, XAxis, YAxis, Tooltip} from 'recharts';
 
 const joinHighlightParts = parts => parts.join('&nbsp;[&hellip;]&nbsp;');
 const getHighlightPart = input =>
