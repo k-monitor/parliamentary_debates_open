@@ -37,6 +37,7 @@
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
     "gh-pages": "^2.0.1",
+    "now-travis": "^1.2.0",
     "redux-mock-store": "^1.5.3"
   },
   "config": {

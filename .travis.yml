@@ -1,17 +1,21 @@
 language: node_js
 sudo: true
 node_js:
-  - "8"
+  - '8'
 install:
   - yarn
 script:
   - yarn test
   - CI=false yarn build
-
+after_script:
+  - yarn now-travis
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GH_TOKEN
+  github_token: '$GH_TOKEN'
   local_dir: build
   on:
 branch: master
+env:
+  global:
+    secure: aUTIoKkFzMSADsNMP6k1pJn/AMUvFWNR4j9Y69WMZ3sPq72Afxg5BazJgDoWB6Nn2X84r+j2Tiyb0Q2u+DYn6IUPr9KBP9NxoJYelPmA+1aeFOQMnXyZlydtmn0n8lryVVUt7gQ/ev3icvxhTbDnIyfCmqUM76Y37I8KaO+b8naacECd6BEsYahdo1b0v+Id/4FhVBpHXVeABxPSB6MW5T0XRzBitPADRS1IWJw4DjJAR6zqqLfJ1lrb2IEtcvNAnsL2qwDpypb/qjiZaQ+4Gb4ZdpTwHNa9pb+Xn8goP2yaHSiNI3LwzqBGAhPgrdsj5XPRBOKZbCxGmCm0UtHDNUQh3VTU7O8YcaFRQiuiia1+ehlLY58HTHp8K5W6LPWYGYdbwXr2F+Y2VI8TaIjSVthL/qdWOs/u9BUfcVhgJtse2NFOMWp7UjbmnhpGXPy1TNbryE2tJfxPAbmDfv5SM6OPYSol32yyTfbef4JkckH1jkIraWH7XhuHIvs2v/2I4ZtdAvfuISoelsbLmeN9/MfcLG8GEf/tTT4bfHK4ZNNb4v4vaKub9TGr35F6AIBjY8rHqJ45/3PZNfk8pXl53ektEOO8eTfDlOG63TVTchSmOXka3rU/7YKlBwxwsBrv9sqHN30H89nlmnR7te2FWrvjdGrtlYs8x/iqdC0uIgc=
