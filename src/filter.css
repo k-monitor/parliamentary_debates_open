@@ -4,3 +4,7 @@ ul.filter {
   max-height: 250px;
   overflow-y: auto;
 }
+
+ul.filter label {
+  font-size: 16px;
+}
