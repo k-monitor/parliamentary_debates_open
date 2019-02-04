@@ -107,7 +107,7 @@ export const navigate_to_search = (search, n) => {
 
 export const update_search = search => {
   return dispatch => {
-    const page = search.page;
+    const page = search.page || 0;
     dispatch({
       type: SEARCH_TERM,
       search,

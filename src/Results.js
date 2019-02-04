@@ -48,7 +48,7 @@ const Results = ({
             stroke="#ebebeb"
             dot={false}
             activeDot={false}
-            fillOpacity={.5}
+            fillOpacity={0.5}
             strokeOpacity={1}
             strokeWidth={2}
             isAnimationActive={false}
@@ -86,7 +86,7 @@ const Results = ({
                 e.preventDefault();
                 open_modal(index);
               }}>
-              {result._source.speaker} &mdash;{' '}
+              {result._source.speaker} &mdash;
               <b>
                 {Array.isArray(result._source.topic)
                   ? result._source.topic.join(', ')
@@ -94,7 +94,7 @@ const Results = ({
               </b>
             </a>
             <span className="meta">
-              {result._source.date}, ({result._source.session},{' '}
+              {result._source.date}, ({result._source.session},
               {result._source.sitting_type})
             </span>
           </h1>
@@ -128,22 +128,21 @@ const Results = ({
                 a.length === 0
                   ? a.concat([b])
                   : a.slice(-1)[0] + 1 === b
-                    ? a.concat([b])
-                    : a.concat(['...', b]),
+                  ? a.concat([b])
+                  : a.concat(['...', b]),
               [],
             )
-            .map(
-              number =>
-                number === '...' ? (
-                  <Pagination.Ellipsis key={Math.random()} />
-                ) : (
-                  <Pagination.Item
-                    key={number}
-                    active={number === page}
-                    onClick={() => navigate_to_page(number)}>
-                    {number + 1}
-                  </Pagination.Item>
-                ),
+            .map(number =>
+              number === '...' ? (
+                <Pagination.Ellipsis key={Math.random()} />
+              ) : (
+                <Pagination.Item
+                  key={number}
+                  active={number === page}
+                  onClick={() => navigate_to_page(number)}>
+                  {number + 1}
+                </Pagination.Item>
+              ),
             )}
         </Pagination>
       </div>
@@ -164,9 +163,9 @@ const Results = ({
 
             <Modal.Body>
               <p>
-                {results.hits.hits[hitOpen]._source.date}, ({
-                  results.hits.hits[hitOpen]._source.session
-                }, {results.hits.hits[hitOpen]._source.sitting_type})
+                {results.hits.hits[hitOpen]._source.date}, (
+                {results.hits.hits[hitOpen]._source.session},{' '}
+                {results.hits.hits[hitOpen]._source.sitting_type})
               </p>
               <p>{results.hits.hits[hitOpen]._source.text}</p>
             </Modal.Body>
