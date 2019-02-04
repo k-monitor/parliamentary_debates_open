@@ -45,10 +45,12 @@ const Results = ({
             dataKey="count"
             name="Felszólalások száma"
             fill="#ebebeb"
+            stroke="#ebebeb"
             dot={false}
             activeDot={false}
-            fillOpacity={1}
-            strokeOpacity={0}
+            fillOpacity={.5}
+            strokeOpacity={1}
+            strokeWidth={2}
             isAnimationActive={false}
           />
           <XAxis
