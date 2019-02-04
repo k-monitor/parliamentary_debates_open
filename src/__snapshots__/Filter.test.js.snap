@@ -6,34 +6,40 @@ exports[`renders correctly 1`] = `
 >
   <li>
     <div
-      className="radio"
+      className="form-check"
     >
+      <input
+        checked={false}
+        className="form-check-input"
+        disabled={false}
+        onChange={[Function]}
+        type="radio"
+      />
       <label
+        className="form-check-label"
         title=""
+        type="checkbox"
       >
-        <input
-          checked={false}
-          disabled={false}
-          onChange={[Function]}
-          type="radio"
-        />
         Összes
       </label>
     </div>
   </li>
   <li>
     <div
-      className="radio"
+      className="form-check"
     >
+      <input
+        checked={false}
+        className="form-check-input"
+        disabled={false}
+        onChange={[Function]}
+        type="radio"
+      />
       <label
+        className="form-check-label"
         title=""
+        type="checkbox"
       >
-        <input
-          checked={false}
-          disabled={false}
-          onChange={[Function]}
-          type="radio"
-        />
         John Doe
          
         <b>
@@ -46,17 +52,20 @@ exports[`renders correctly 1`] = `
   </li>
   <li>
     <div
-      className="radio"
+      className="form-check"
     >
+      <input
+        checked={false}
+        className="form-check-input"
+        disabled={false}
+        onChange={[Function]}
+        type="radio"
+      />
       <label
+        className="form-check-label"
         title=""
+        type="checkbox"
       >
-        <input
-          checked={false}
-          disabled={false}
-          onChange={[Function]}
-          type="radio"
-        />
         asdfg
          
         <b>
@@ -69,17 +78,20 @@ exports[`renders correctly 1`] = `
   </li>
   <li>
     <div
-      className="radio"
+      className="form-check"
     >
+      <input
+        checked={false}
+        className="form-check-input"
+        disabled={false}
+        onChange={[Function]}
+        type="radio"
+      />
       <label
+        className="form-check-label"
         title=""
+        type="checkbox"
       >
-        <input
-          checked={false}
-          disabled={false}
-          onChange={[Function]}
-          type="radio"
-        />
         sdgsdf
          
         <b>

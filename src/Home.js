@@ -11,7 +11,8 @@ import Filter from './Filter.js';
 import Help from './Help.js';
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar';
-import DatePicker from 'react-16-bootstrap-date-picker';
+import Datetime from 'react-datetime';
+require('moment/locale/hu');
 
 const parseDate = string =>
   string
@@ -50,20 +51,30 @@ const Home = props => (
           />
           <h2>Dátum</h2>
           <h3>Ettől a naptól:</h3>
-          <DatePicker
+          <Datetime
+            timeFormat={false}
             value={parseDate(props.search.start_date)}
-            onChange={(_, value) =>
-              props.navigate_to_search({...props.search, start_date: value})
+            onChange={value =>
+              props.navigate_to_search({
+                ...props.search,
+                start_date: value.format('YYYY.MM.DD.'),
+              })
             }
-            dateFormat="YYYY.MM.DD."
+            locale="hu"
+            input={false}
           />
           <h3>Eddig a napig:</h3>
-          <DatePicker
+          <Datetime
+            timeFormat={false}
             value={parseDate(props.search.end_date)}
-            onChange={(_, value) =>
-              props.navigate_to_search({...props.search, end_date: value})
+            onChange={value =>
+              props.navigate_to_search({
+                ...props.search,
+                end_date: value.format('YYYY.MM.DD.'),
+              })
             }
-            dateFormat="YYYY.MM.DD."
+            locale="hu"
+            input={false}
           />
         </div>
       ) : null}
@@ -98,4 +109,7 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
