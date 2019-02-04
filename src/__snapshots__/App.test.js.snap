@@ -54,10 +54,11 @@ exports[`renders correctly 1`] = `
         className="col-sm-9"
       >
         <div
-          className="panel panel-info"
+          bsStyle="info"
+          className="card"
         >
           <div
-            className="panel-body"
+            className="card-body"
           >
             <p>
               Ez az oldal azért jött létre, hogy az újságírók számára könnyebben kereshetővé váljanak a magyar országgyűlés felszólalásai 1990-től napjainking.
@@ -80,6 +81,7 @@ exports[`renders correctly 1`] = `
               </li>
             </ul>
             <button
+              bsStyle="primary"
               className="btn btn-primary"
               disabled={false}
               onClick={[Function]}
