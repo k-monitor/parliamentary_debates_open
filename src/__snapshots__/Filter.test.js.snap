@@ -7,7 +7,6 @@ exports[`renders correctly 1`] = `
   <li>
     <div
       className="radio"
-      style={undefined}
     >
       <label
         title=""
@@ -25,7 +24,6 @@ exports[`renders correctly 1`] = `
   <li>
     <div
       className="radio"
-      style={undefined}
     >
       <label
         title=""
@@ -49,7 +47,6 @@ exports[`renders correctly 1`] = `
   <li>
     <div
       className="radio"
-      style={undefined}
     >
       <label
         title=""
@@ -73,7 +70,6 @@ exports[`renders correctly 1`] = `
   <li>
     <div
       className="radio"
-      style={undefined}
     >
       <label
         title=""

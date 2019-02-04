@@ -43,7 +43,6 @@ exports[`renders correctly 1`] = `
         </h2>
         <input
           className="form-control"
-          id={undefined}
           onBlur={[Function]}
           onChange={[Function]}
           onKeyDown={[Function]}
