@@ -28,6 +28,7 @@ const Home = props => (
         minLength={3}
         delayTimeout={300}
         element={FormControl}
+        value={props.search.term}
         onChange={event =>
           props.navigate_to_search({
             ...props.search,
@@ -88,6 +89,7 @@ const Home = props => (
         navigate_to_page={n => props.navigate_to_search(props.search, n)}
         open_modal={props.open_modal}
         close_modal={props.close_modal}
+        term={props.search.term}
       />
     </Col>
   </Row>
