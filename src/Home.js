@@ -36,7 +36,7 @@ const Home = props => (
           })
         }
       />
-      {props.search.term && props.search.term.length > 3 ? (
+      {props.search.term && props.search.term.length >= 3 ? (
         <div>
           <h2>Felszólalók</h2>
           <Filter
