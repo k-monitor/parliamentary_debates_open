@@ -28,6 +28,7 @@ const Home = props => (
         minLength={3}
         delayTimeout={300}
         element={FormControl}
+        value={props.search.term}
         onChange={event =>
           props.navigate_to_search({
             ...props.search,
