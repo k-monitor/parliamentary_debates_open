@@ -31,6 +31,7 @@ const Results = ({
   hitOpen,
   open_modal,
   close_modal,
+  term,
 }) =>
   results.hits.total > 0 ? (
     <div>
@@ -76,7 +77,9 @@ const Results = ({
           />
         </AreaChart>
       </div>
-      <h2>{results.hits.total} találat:</h2>
+      <h2>
+        {results.hits.total} találat &quot;{term}&quot; kulcsszóra:
+      </h2>
       {results.hits.hits.map((result, index) => (
         <article className="result" key={result._id}>
           <h1>

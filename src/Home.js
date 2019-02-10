@@ -89,6 +89,7 @@ const Home = props => (
         navigate_to_page={n => props.navigate_to_search(props.search, n)}
         open_modal={props.open_modal}
         close_modal={props.close_modal}
+        term={props.search.term}
       />
     </Col>
   </Row>
