@@ -141,7 +141,7 @@ const Results = ({
               ) : (
                 <Pagination.Item
                   key={number}
-                  active={number === page}
+                  active={number * 1 === page * 1}
                   onClick={() => navigate_to_page(number)}>
                   {number + 1}
                 </Pagination.Item>
