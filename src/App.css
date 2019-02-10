@@ -82,3 +82,7 @@
 .rdtPicker thead tr:first-child th:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+.modal-dialog {
+  max-width: 900px;
+}
