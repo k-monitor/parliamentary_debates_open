@@ -86,3 +86,15 @@
 .modal-dialog {
   max-width: 900px;
 }
+
+.filterTools h2 {
+  margin-top: 1em;
+}
+
+.filterTools h3 {
+  margin-top: 0.5em;
+}
+
+.navbar-brand {
+  color: rgb(235, 235, 235) !important;
+}
