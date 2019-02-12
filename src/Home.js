@@ -12,7 +12,6 @@ import Help from './Help.js';
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar';
 import Datetime from 'react-datetime';
-import {Button} from 'react-bootstrap';
 require('moment/locale/hu');
 
 const parseDate = string =>
@@ -22,12 +21,6 @@ const parseDate = string =>
 
 const Home = props => (
   <>
-    <Row>
-      <h1>
-        A magyar országgyűlés felszólalásai 1990 óta
-        <Button onClick={props.toggle}>Súgó mutatása</Button>
-      </h1>
-    </Row>
     <Row>
       <Loading show={props.search.loading} color="red" showSpinner={false} />
       <Col sm={3}>
