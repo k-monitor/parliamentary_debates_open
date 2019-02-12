@@ -88,10 +88,13 @@
 }
 
 .filterTools h2 {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
-
 .filterTools h3 {
-    margin-top: .5em;
+  margin-top: 0.5em;
+}
+
+.navbar-brand {
+  color: rgb(235, 235, 235) !important;
 }
