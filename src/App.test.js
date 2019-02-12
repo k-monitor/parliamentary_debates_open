@@ -4,6 +4,14 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import store from './store';
 
+jest.mock('recharts', () => ({
+  AreaChart: () => 'AreaChart',
+  Area: () => 'Area',
+  XAxis: () => 'XAxis',
+  YAxis: () => 'YAxis',
+  Tooltip: () => 'Tooltip',
+}));
+
 it('renders correctly', () => {
   const tree = renderer
     .create(

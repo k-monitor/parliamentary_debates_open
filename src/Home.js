@@ -20,6 +20,8 @@ import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar';
 import Datetime from 'react-datetime';
 import HomepageKeywords from './homepage_keywords.json';
+import ChartData from './ChartData.json';
+import Chart from './Chart';
 require('moment/locale/hu');
 
 const parseDate = string =>
@@ -50,8 +52,14 @@ const Home = props => (
           {props.search.term === '' &&
             HomepageKeywords.map(keyword => (
               <Card key={keyword}>
+                <Card.Header>{keyword}</Card.Header>
                 <Card.Body>
-                  <Card.Title>{keyword}</Card.Title>
+                  <Chart
+                    {...ChartData[keyword]}
+                    width={300}
+                    height={120}
+                    mini
+                  />
                   <Button
                     variant="primary"
                     onClick={() =>

@@ -124,12 +124,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              korrupció
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                korrupció
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -145,12 +148,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              oktatás
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                oktatás
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -166,12 +172,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              egészségügy
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                egészségügy
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -187,12 +196,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              migráns
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                migráns
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -208,12 +220,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              migráció
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                migráció
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -229,12 +244,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              Soros
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                Soros
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -250,12 +268,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              kormányváltás
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                kormányváltás
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -271,12 +292,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              választások
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                választások
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -292,12 +316,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              demokrácia
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                demokrácia
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -313,12 +340,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              rendszerváltás
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                rendszerváltás
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
@@ -334,12 +364,15 @@ exports[`renders correctly 1`] = `
             className="card"
           >
             <div
+              className="card-header"
+            >
+              összefogás
+            </div>
+            <div
               className="card-body"
             >
-              <div
-                className="card-title h5"
-              >
-                összefogás
+              <div>
+                AreaChart
               </div>
               <button
                 className="btn btn-primary"
