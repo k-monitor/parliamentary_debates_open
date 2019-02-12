@@ -38,7 +38,7 @@ const Home = props => (
           }
         />
         {props.search.term && props.search.term.length >= 3 ? (
-          <div>
+          <div className="filterTools">
             <h2>Felszólalók</h2>
             <Filter
               counts={props.search.results.aggregations.speakers.buckets}

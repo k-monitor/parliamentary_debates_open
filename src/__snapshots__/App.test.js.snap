@@ -61,6 +61,11 @@ exports[`renders correctly 1`] = `
   </nav>
   <div
     className="container"
+    style={
+      Object {
+        "marginTop": "2em",
+      }
+    }
   >
     <div
       className="row"

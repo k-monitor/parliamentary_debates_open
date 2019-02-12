@@ -31,7 +31,7 @@ class App extends Component {
             </Button>
           </Navbar.Collapse>
         </Navbar>
-        <Container>
+        <Container style={{marginTop: '2em'}}>
           <Home />
         </Container>
       </>
