@@ -9,6 +9,8 @@ import {toggle} from './store/modules/help';
 import {bindActionCreators} from 'redux';
 
 import {connect} from 'react-redux';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faQuestion} from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -23,7 +25,10 @@ class App extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
-            <Button onClick={this.props.toggle}>Súgó mutatása</Button>
+            <Button onClick={this.props.toggle}>
+              <FontAwesomeIcon icon={faQuestion} />
+              <span>Súgó mutatása</span>
+            </Button>
           </Navbar.Collapse>
         </Navbar>
         <Container>
