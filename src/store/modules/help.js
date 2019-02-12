@@ -1,25 +1,25 @@
-export const TOGGLE = 'help/TOGGLE'
+export const TOGGLE = 'help/TOGGLE';
 
 const initialState = {
-  show: true
-}
+  show: false,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE:
       return {
         ...state,
-        show: !state.show
-      }
+        show: !state.show,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const toggle = () => {
   return dispatch => {
     dispatch({
-      type: TOGGLE
-    })
-  }
-}
+      type: TOGGLE,
+    });
+  };
+};
