@@ -35,6 +35,9 @@ const Results = ({
 }) =>
   results.hits.total > 0 ? (
     <div>
+      <h2>
+        {results.hits.total} találat &quot;{term}&quot; kulcsszóra:
+      </h2>
       <div style={{margin: 'auto', width: 600}}>
         <AreaChart
           width={600}
@@ -77,9 +80,7 @@ const Results = ({
           />
         </AreaChart>
       </div>
-      <h2>
-        {results.hits.total} találat &quot;{term}&quot; kulcsszóra:
-      </h2>
+
       {results.hits.hits.map((result, index) => (
         <article className="result" key={result._id}>
           <h1>
