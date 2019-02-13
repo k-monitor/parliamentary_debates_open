@@ -10,7 +10,7 @@ import {bindActionCreators} from 'redux';
 
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faQuestion} from '@fortawesome/free-solid-svg-icons';
+import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -26,8 +26,9 @@ class App extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
             <Button onClick={this.props.toggle}>
-              <FontAwesomeIcon icon={faQuestion} />
-              <span>Súgó mutatása</span>
+              <FontAwesomeIcon icon={faInfoCircle} />
+              &nbsp;
+              <span>Mi ez?</span>
             </Button>
           </Navbar.Collapse>
         </Navbar>
