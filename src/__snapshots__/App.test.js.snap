@@ -8,7 +8,11 @@ exports[`renders correctly 1`] = `
     <span
       className="navbar-brand"
     >
-      Az Országgyűlés felszólalásai 1990 óta
+      <img
+        height={40}
+        src="logo.jpg"
+      />
+        Az Országgyűlés felszólalásai 1990 óta
     </span>
     <button
       aria-controls="basic-navbar-nav"

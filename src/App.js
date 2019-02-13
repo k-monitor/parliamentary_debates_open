@@ -11,6 +11,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import logo from './logo.jpg';
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -21,7 +22,10 @@ class App extends Component {
     return (
       <>
         <Navbar bg="dark" expand="lg" sticky="top">
-          <Navbar.Brand>Az Országgyűlés felszólalásai 1990 óta</Navbar.Brand>
+          <Navbar.Brand>
+            <img src={logo} height={40} />
+            &nbsp; Az Országgyűlés felszólalásai 1990 óta
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
