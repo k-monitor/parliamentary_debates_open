@@ -4,11 +4,13 @@ import {navigate_to_search} from './store/modules/search';
 import {open_modal} from './store/modules/search';
 import {close_modal} from './store/modules/search';
 import {toggle} from './store/modules/help';
+import {toggle as toggleAbout} from './store/modules/about';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Results from './Results.js';
 import Filter from './Filter.js';
 import Help from './Help.js';
+import About from './About.js';
 import {DelayInput} from 'react-delay-input';
 import Loading from 'react-loading-bar';
 import Datetime from 'react-datetime';
@@ -83,6 +85,7 @@ const Home = props => (
       </Col>
       <Col sm={9}>
         <Help toggle={props.toggle} show={props.help.show} />
+        <About toggle={props.toggleAbout} show={props.about.show} />
         <Results
           results={props.search.results}
           page={props.search.page}
@@ -100,6 +103,7 @@ const Home = props => (
 const mapStateToProps = state => ({
   search: state.search,
   help: state.help,
+  about: state.about,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -109,6 +113,7 @@ const mapDispatchToProps = dispatch =>
       open_modal,
       close_modal,
       toggle,
+      toggleAbout,
     },
     dispatch,
   );

@@ -6,6 +6,7 @@ import {Container} from 'react-bootstrap';
 import Home from './Home';
 import {Button, Navbar, Nav} from 'react-bootstrap';
 import {toggle} from './store/modules/help';
+import {toggle as toggleAbout} from './store/modules/about';
 import {bindActionCreators} from 'redux';
 
 import {connect} from 'react-redux';
@@ -29,6 +30,12 @@ class App extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
+ <Button onClick={this.props.toggleAbout}>
+              <FontAwesomeIcon icon={faInfoCircle} />
+              &nbsp;
+              <span>Mi ez?</span>
+            </Button>
+
             <Button onClick={this.props.toggle}>
               <FontAwesomeIcon icon={faInfoCircle} />
               &nbsp;
@@ -52,6 +59,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       toggle,
+      toggleAbout,
     },
     dispatch,
   );
