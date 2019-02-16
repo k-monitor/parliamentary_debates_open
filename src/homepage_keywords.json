@@ -1,13 +1,11 @@
 [
   "korrupció",
-  "oktatás",
-  "egészségügy",
-  "migráns",
-  "migráció",
-  "Soros",
-  "kormányváltás",
-  "választások",
   "demokrácia",
-  "rendszerváltás",
-  "összefogás"
+  "migráció OR migráns",
+  "\"emberi jogok\"",
+  "\"soros györgy\"",
+  "euró",
+  "költségvetés",
+  "NATO",
+  "kormányváltás"
 ]

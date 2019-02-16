@@ -150,174 +150,6 @@ exports[`renders correctly 1`] = `
             <div
               className="card-header"
             >
-              oktatás
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              egészségügy
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              migráns
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              migráció
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              Soros
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              kormányváltás
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
-              választások
-            </div>
-            <div
-              className="card-body"
-            >
-              <div>
-                AreaChart
-              </div>
-              <button
-                className="btn btn-primary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Keresés
-              </button>
-            </div>
-          </div>
-          <div
-            className="card"
-          >
-            <div
-              className="card-header"
-            >
               demokrácia
             </div>
             <div
@@ -342,7 +174,7 @@ exports[`renders correctly 1`] = `
             <div
               className="card-header"
             >
-              rendszerváltás
+              migráció OR migráns
             </div>
             <div
               className="card-body"
@@ -366,7 +198,127 @@ exports[`renders correctly 1`] = `
             <div
               className="card-header"
             >
-              összefogás
+              "emberi jogok"
+            </div>
+            <div
+              className="card-body"
+            >
+              <div>
+                AreaChart
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Keresés
+              </button>
+            </div>
+          </div>
+          <div
+            className="card"
+          >
+            <div
+              className="card-header"
+            >
+              "soros györgy"
+            </div>
+            <div
+              className="card-body"
+            >
+              <div>
+                AreaChart
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Keresés
+              </button>
+            </div>
+          </div>
+          <div
+            className="card"
+          >
+            <div
+              className="card-header"
+            >
+              euró
+            </div>
+            <div
+              className="card-body"
+            >
+              <div>
+                AreaChart
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Keresés
+              </button>
+            </div>
+          </div>
+          <div
+            className="card"
+          >
+            <div
+              className="card-header"
+            >
+              költségvetés
+            </div>
+            <div
+              className="card-body"
+            >
+              <div>
+                AreaChart
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Keresés
+              </button>
+            </div>
+          </div>
+          <div
+            className="card"
+          >
+            <div
+              className="card-header"
+            >
+              NATO
+            </div>
+            <div
+              className="card-body"
+            >
+              <div>
+                AreaChart
+              </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Keresés
+              </button>
+            </div>
+          </div>
+          <div
+            className="card"
+          >
+            <div
+              className="card-header"
+            >
+              kormányváltás
             </div>
             <div
               className="card-body"
