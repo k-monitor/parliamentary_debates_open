@@ -12,7 +12,7 @@ script:
   - CI=false yarn build
 
 after_success:
-  - surge --project ./build --domain staging-${TRAVIS_PULL_REQUEST}-parldata.surge.sh
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then ./scripts/deployStaging.sh; fi;
 
 deploy:
   provider: pages
