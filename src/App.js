@@ -8,6 +8,8 @@ import {Button, Navbar, Nav} from 'react-bootstrap';
 import {toggle} from './store/modules/help';
 import {bindActionCreators} from 'redux';
 
+import {navigate_to_search} from './store/modules/search';
+
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +24,9 @@ class App extends Component {
     return (
       <>
         <Navbar bg="dark" expand="lg" sticky="top">
-          <Navbar.Brand>
+          <Navbar.Brand
+            href="#"
+            onClick={() => this.props.navigate_to_search({term: ''})}>
             <img src={logo} height={40} />
             &nbsp; Az Országgyűlés felszólalásai 1990 óta
           </Navbar.Brand>
@@ -52,6 +56,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       toggle,
+      navigate_to_search,
     },
     dispatch,
   );
