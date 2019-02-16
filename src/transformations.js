@@ -77,9 +77,9 @@ const months = [
 ];
 
 export const formatBinName = binsize => timestamp => {
-  const binStart = new Date(Math.floor(timestamp * 1 / binsize) * binsize);
+  const binStart = new Date(Math.floor((timestamp * 1) / binsize) * binsize);
   const binEnd = new Date(
-    Math.floor(timestamp * 1 / binsize) * binsize + binsize,
+    Math.floor((timestamp * 1) / binsize) * binsize + binsize,
   );
 
   return `${binStart.getFullYear()}. ${
@@ -92,11 +92,23 @@ export const formatBinName = binsize => timestamp => {
 export const formatBinNameShort = binsize => timestamp => {
   const binMiddle = new Date(
     Math.floor(
-      (Math.floor(timestamp * 1 / binsize) * binsize +
+      (Math.floor((timestamp * 1) / binsize) * binsize +
         binsize +
-        Math.floor(timestamp * 1 / binsize) * binsize) /
+        Math.floor((timestamp * 1) / binsize) * binsize) /
         2,
     ),
   );
   return `${binMiddle.getFullYear()}. ${months[binMiddle.getMonth()]}`;
+};
+
+export const formatBinNameMini = binsize => timestamp => {
+  const binMiddle = new Date(
+    Math.floor(
+      (Math.floor((timestamp * 1) / binsize) * binsize +
+        binsize +
+        Math.floor((timestamp * 1) / binsize) * binsize) /
+        2,
+    ),
+  );
+  return binMiddle.getFullYear();
 };

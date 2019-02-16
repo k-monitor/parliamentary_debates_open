@@ -3,13 +3,17 @@ sudo: true
 node_js:
   - '8'
 install:
+  - sudo apt-get install jq
   - yarn
 script:
+  - ./scripts/fetchChartData.sh
   - yarn test
-  - CI=false yarn build
   - yarn eslint
+  - CI=false yarn build
+
 after_success:
   - surge --project ./build --domain staging-${TRAVIS_PULL_REQUEST}-parldata.surge.sh
+
 deploy:
   provider: pages
   skip_cleanup: true
