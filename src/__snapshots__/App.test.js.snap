@@ -5,15 +5,17 @@ exports[`renders correctly 1`] = `
   <nav
     className="navbar navbar-expand-lg navbar-light bg-dark sticky-top"
   >
-    <span
+    <a
       className="navbar-brand"
+      href="#"
+      onClick={[Function]}
     >
       <img
         height={40}
         src="logo.jpg"
       />
         Az Országgyűlés felszólalásai 1990 óta
-    </span>
+    </a>
     <button
       aria-controls="basic-navbar-nav"
       aria-label="Toggle navigation"
