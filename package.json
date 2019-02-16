@@ -45,8 +45,8 @@
     "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-react": "^7.12.4",
     "gh-pages": "^2.0.1",
-    "now-travis": "^1.2.0",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "surge": "^0.20.1"
   },
   "config": {
     "commitizen": {

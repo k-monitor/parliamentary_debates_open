@@ -8,8 +8,8 @@ script:
   - yarn test
   - CI=false yarn build
   - yarn eslint
-after_script:
-  - yarn now-travis
+after_success:
+  - surge --project ./build --domain staging-${TRAVIS_PULL_REQUEST}-parldata.surge.sh
 deploy:
   provider: pages
   skip_cleanup: true
