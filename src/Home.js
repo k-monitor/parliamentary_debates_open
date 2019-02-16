@@ -49,7 +49,7 @@ const Home = props => (
           }
         />
         <CardColumns style={{marginTop: '3em'}}>
-          {props.search.term === '' &&
+          {!props.search.term &&
             HomepageKeywords.map(keyword => (
               <Card key={keyword}>
                 <Card.Header>{keyword}</Card.Header>
