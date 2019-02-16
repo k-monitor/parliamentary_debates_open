@@ -12,10 +12,7 @@ script:
   - CI=false yarn build
 
 after_success:
-  - mv package.json package.json_; cat package.json_  | jq '.homepage = ""' > package.json; rm package.json_
-  - CI=false yarn build
-  - mv ./build/index.html ./build/200.html
-  - surge --project ./build --domain staging-${TRAVIS_PULL_REQUEST}-parldata.surge.sh
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then ./scripts/deployStaging.sh; fi;
 
 deploy:
   provider: pages
