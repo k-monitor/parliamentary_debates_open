@@ -12,6 +12,7 @@ script:
   - CI=false yarn build
 
 after_success:
+  - mv ./build/index.html ./build/200.html
   - surge --project ./build --domain staging-${TRAVIS_PULL_REQUEST}-parldata.surge.sh
 
 deploy:
