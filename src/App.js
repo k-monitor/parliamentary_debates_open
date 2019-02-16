@@ -15,6 +15,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.jpg';
 
+
 class App extends Component {
   UNSAFE_componentWillMount() {
     document.title = 'A magyar országgyűlés felszólalásai 1990 óta';

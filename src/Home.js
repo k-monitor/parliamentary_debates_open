@@ -22,6 +22,9 @@ import Datetime from 'react-datetime';
 import HomepageKeywords from './homepage_keywords.json';
 import ChartData from './ChartData.json';
 import Chart from './Chart';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import {DateRange} from 'react-date-range';
 require('moment/locale/hu');
 
 const parseDate = string =>
@@ -88,6 +91,11 @@ const Home = props => (
               filter_value={props.search.speaker_filter}
             />
             <h2>Dátum</h2>
+            <DateRange
+              moveRangeOnFirstSelection={false}
+              ranges={[{}]}
+              className={'PreviewArea'}
+            />
             <h3>Ettől a naptól:</h3>
             <Datetime
               timeFormat={false}
