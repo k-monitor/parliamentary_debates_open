@@ -138,6 +138,10 @@ const Results = ({
         )}
       </Modal>
     </div>
-  ) : null;
+  ) : (
+    <div>
+      <h2>Nincs találat &quot;{term}&quot; kulcsszóra &#9785;</h2>{' '}
+    </div>
+  );
 
 export default Results;
