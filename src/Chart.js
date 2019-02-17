@@ -54,6 +54,7 @@ const Chart = props => (
         labelStyle={{color: 'black'}}
         labelFormatter={formatBinName(binsize)}
         separator=": "
+        itemStyle={{color: 'black'}}
       />
     </AreaChart>
   </div>
