@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pagination, Modal, Button} from 'react-bootstrap';
+import {Pagination, Modal, Button, Card} from 'react-bootstrap';
 import get_pages from './pagination';
 import config from './config.json';
 import Chart from './Chart';
@@ -36,39 +36,51 @@ const Results = ({
         width={600}
         height={300}
       />
-      {results.hits.hits.map((result, index) => (
-        <article className="result" key={result._id}>
-          <h1>
-            <a
-              href="#"
-              onClick={e => {
-                e.preventDefault();
-                open_modal(index);
-              }}>
-              {result._source.speaker} &mdash;
-              <b>
-                {Array.isArray(result._source.topic)
-                  ? result._source.topic.join(', ')
-                  : result._source.topic}
-              </b>
-            </a>
-            <span className="meta">
-              {result._source.date}, ({result._source.session},
-              {result._source.sitting_type})
-            </span>
-          </h1>
-          <p
-            dangerouslySetInnerHTML={{
-              __html:
-                formatHighlight(result.highlight) ||
-                result._source.text.slice(0, 150),
-            }}
-          />
-          <span className="source">
-            Forrás: <a href={result._source.url}>{result._source.url}</a>
-          </span>
-        </article>
-      ))}
+      <div className="CardList">
+        {results.hits.hits.map((result, index) => (
+          <a
+            key={result._id}
+            className="hiddenLink"
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              open_modal(index);
+            }}>
+            <Card>
+              <Card.Header>
+                <a
+                  href="#"
+                  className="title"
+                  onClick={e => {
+                    e.preventDefault();
+                    open_modal(index);
+                  }}>
+                  {result._source.speaker} &mdash;
+                  <b>
+                    {Array.isArray(result._source.topic)
+                      ? result._source.topic.join(', ')
+                      : result._source.topic}
+                  </b>
+                </a>
+                <span className="date">{result._source.date} </span>
+              </Card.Header>
+
+              <Card.Body>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      formatHighlight(result.highlight) ||
+                      result._source.text.slice(0, 150),
+                  }}
+                />
+                <p>
+                  ({result._source.session},{result._source.sitting_type})
+                </p>
+              </Card.Body>
+            </Card>
+          </a>
+        ))}
+      </div>
       <div>
         <Pagination>
           {get_pages(config.page_size, results.hits.total)
@@ -127,6 +139,12 @@ const Results = ({
                 {results.hits.hits[hitOpen]._source.sitting_type})
               </p>
               <p>{results.hits.hits[hitOpen]._source.text}</p>
+              <p className="source">
+                Forrás:{' '}
+                <a href={results.hits.hits[hitOpen]._source.url}>
+                  {results.hits.hits[hitOpen]._source.url}
+                </a>
+              </p>
             </Modal.Body>
 
             <Modal.Footer>
