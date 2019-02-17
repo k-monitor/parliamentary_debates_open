@@ -33,7 +33,7 @@ const Home = props => (
   <>
     <Row>
       <Loading show={props.search.loading} color="red" showSpinner={false} />
-      <Col sm={props.search.term === '' ? 12 : 3}>
+      <Col sm={props.search.term ? 3 : 12}>
         <h2>Kereső</h2>
         <DelayInput
           minLength={3}
@@ -117,7 +117,7 @@ const Home = props => (
           </div>
         ) : null}
       </Col>
-      <Col sm={props.search.term === '' ? 0 : 9}>
+      <Col sm={props.search.term ? 9 : 0}>
         <Help toggle={props.toggle} show={props.help.show} />
         <Results
           results={props.search.results}
