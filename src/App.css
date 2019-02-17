@@ -46,3 +46,9 @@ em {
   position: absolute;
   right: 1.5em;
 }
+
+.hiddenLink,
+.hiddenLink:hover {
+  color: inherit;
+  text-decoration: none;
+}

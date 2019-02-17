@@ -38,37 +38,46 @@ const Results = ({
       />
       <div className="CardList">
         {results.hits.hits.map((result, index) => (
-          <Card key={result._id}>
-            <Card.Header>
-              <a
-                href="#"
-                onClick={e => {
-                  e.preventDefault();
-                  open_modal(index);
-                }}>
-                {result._source.speaker} &mdash;
-                <b>
-                  {Array.isArray(result._source.topic)
-                    ? result._source.topic.join(', ')
-                    : result._source.topic}
-                </b>
-              </a>
-              <span className="date">{result._source.date} </span>
-            </Card.Header>
+          <a
+            key={result._id}
+            className="hiddenLink"
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              open_modal(index);
+            }}>
+            <Card>
+              <Card.Header>
+                <a
+                  href="#"
+                  onClick={e => {
+                    e.preventDefault();
+                    open_modal(index);
+                  }}>
+                  {result._source.speaker} &mdash;
+                  <b>
+                    {Array.isArray(result._source.topic)
+                      ? result._source.topic.join(', ')
+                      : result._source.topic}
+                  </b>
+                </a>
+                <span className="date">{result._source.date} </span>
+              </Card.Header>
 
-            <Card.Body>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html:
-                    formatHighlight(result.highlight) ||
-                    result._source.text.slice(0, 150),
-                }}
-              />
-              <p>
-                ({result._source.session},{result._source.sitting_type})
-              </p>
-            </Card.Body>
-          </Card>
+              <Card.Body>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      formatHighlight(result.highlight) ||
+                      result._source.text.slice(0, 150),
+                  }}
+                />
+                <p>
+                  ({result._source.session},{result._source.sitting_type})
+                </p>
+              </Card.Body>
+            </Card>
+          </a>
         ))}
       </div>
       <div>
