@@ -24,10 +24,15 @@ import ChartData from './ChartData.json';
 import Chart from './Chart';
 require('moment/locale/hu');
 
-const parseDate = string =>
-  string
-    ? string.replace('.', '-').replace('.', '-') + 'T12:00:00.000Z'
-    : string;
+const parseDate = string => (string ? string : string);
+
+const formatDateValue = value => {
+  try {
+    return value.format('YYYY.MM.DD.');
+  } catch (e) {
+    return value;
+  }
+};
 
 const Home = props => (
   <>
@@ -95,11 +100,12 @@ const Home = props => (
               onChange={value =>
                 props.navigate_to_search({
                   ...props.search,
-                  start_date: value.format('YYYY.MM.DD.'),
+                  start_date: formatDateValue(value),
                 })
               }
               locale="hu"
-              input={false}
+              input={true}
+              closeOnSelect={true}
             />
             <h3>Eddig a napig:</h3>
             <Datetime
@@ -108,11 +114,12 @@ const Home = props => (
               onChange={value =>
                 props.navigate_to_search({
                   ...props.search,
-                  end_date: value.format('YYYY.MM.DD.'),
+                  end_date: formatDateValue(value),
                 })
               }
               locale="hu"
-              input={false}
+              input={true}
+              closeOnSelect={true}
             />
           </div>
         ) : null}
