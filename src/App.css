@@ -45,6 +45,16 @@ em {
 .card .date {
   position: absolute;
   right: 1.5em;
+  top: 0.7em;
+  display: block;
+}
+
+.card .title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 6.5em;
+  display: block;
 }
 
 .hiddenLink,

@@ -50,6 +50,7 @@ const Results = ({
               <Card.Header>
                 <a
                   href="#"
+                  className="title"
                   onClick={e => {
                     e.preventDefault();
                     open_modal(index);
