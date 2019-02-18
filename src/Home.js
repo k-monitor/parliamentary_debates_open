@@ -56,26 +56,37 @@ const Home = props => (
         <CardColumns style={{marginTop: '3em'}}>
           {!props.search.term &&
             HomepageKeywords.map(keyword => (
-              <Card key={keyword}>
-                <Card.Header>{keyword}</Card.Header>
-                <Card.Body>
-                  <Chart
-                    {...ChartData[keyword]}
-                    width={300}
-                    height={120}
-                    mini
-                  />
-                  <Button
-                    variant="primary"
-                    onClick={() =>
-                      props.navigate_to_search({
-                        term: keyword,
-                      })
-                    }>
-                    Keresés
-                  </Button>
-                </Card.Body>
-              </Card>
+              <a
+                key={keyword}
+                className="hiddenLink"
+                href="#"
+                onClick={e => {
+                  e.preventDefault();
+                  props.navigate_to_search({
+                    term: keyword,
+                  });
+                }}>
+                <Card>
+                  <Card.Header>{keyword}</Card.Header>
+                  <Card.Body>
+                    <Chart
+                      {...ChartData[keyword]}
+                      width={300}
+                      height={120}
+                      mini
+                    />
+                    <Button
+                      variant="primary"
+                      onClick={() =>
+                        props.navigate_to_search({
+                          term: keyword,
+                        })
+                      }>
+                      Keresés
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </a>
             ))}
         </CardColumns>
         {props.search.term && props.search.term.length >= 3 ? (
