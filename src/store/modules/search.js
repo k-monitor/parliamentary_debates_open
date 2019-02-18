@@ -10,7 +10,7 @@ export const CHANGE_SPEAKER_FILTER = 'search/CHANGE_SPEAKER_FILTER';
 export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER';
 
 const initialState = {
-  loading: false,
+  loading: true,
   term: '',
   results: {
     aggregations: {

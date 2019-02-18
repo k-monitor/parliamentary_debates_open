@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 //import 'bootstrap/dist/css/bootstrap.css';
-import 'react-loading-bar/dist/index.css';
 import {Container} from 'react-bootstrap';
 import Home from './Home';
 import {Button, Navbar, Nav} from 'react-bootstrap';
@@ -14,6 +13,7 @@ import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.jpg';
+import LoadingBar from 'react-top-loading-bar';
 
 class App extends Component {
   UNSAFE_componentWillMount() {
@@ -23,6 +23,10 @@ class App extends Component {
   render() {
     return (
       <>
+        <LoadingBar
+          progress={this.props.search.loading ? 20 : 100}
+          color="red"
+        />
         <Navbar bg="dark" expand="lg" sticky="top">
           <Navbar.Brand
             href="#"
@@ -50,6 +54,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   help: state.help,
+  search: state.search,
 });
 
 const mapDispatchToProps = dispatch =>
