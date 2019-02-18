@@ -134,6 +134,7 @@ const Home = props => (
           open_modal={props.open_modal}
           close_modal={props.close_modal}
           term={props.search.term}
+          isLoading={props.search.loading}
         />
       </Col>
     </Row>

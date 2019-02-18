@@ -340,16 +340,7 @@ exports[`renders correctly 1`] = `
       </div>
       <div
         className="col-sm-0"
-      >
-        <div>
-          <h2>
-            Nincs találat "
-            
-            " kulcsszóra ☹
-          </h2>
-           
-        </div>
-      </div>
+      />
     </div>
   </div>
 </div>
