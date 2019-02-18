@@ -17,7 +17,6 @@ import Results from './Results.js';
 import Filter from './Filter.js';
 import Help from './Help.js';
 import {DelayInput} from 'react-delay-input';
-import Loading from 'react-loading-bar';
 import Datetime from 'react-datetime';
 import HomepageKeywords from './homepage_keywords.json';
 import ChartData from './ChartData.json';
@@ -37,7 +36,6 @@ const formatDateValue = value => {
 const Home = props => (
   <>
     <Row>
-      <Loading show={props.search.loading} color="red" showSpinner={false} />
       <Col sm={props.search.term ? 3 : 12}>
         <h2>Kereső</h2>
         <DelayInput
