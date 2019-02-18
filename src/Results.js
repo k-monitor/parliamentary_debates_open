@@ -24,6 +24,7 @@ const Results = ({
   open_modal,
   close_modal,
   term,
+  isLoading,
 }) =>
   results.hits.total > 0 ? (
     <div>
@@ -156,10 +157,10 @@ const Results = ({
         )}
       </Modal>
     </div>
-  ) : (
+  ) : term && !isLoading ? (
     <div>
       <h2>Nincs találat &quot;{term}&quot; kulcsszóra &#9785;</h2>{' '}
     </div>
-  );
+  ) : null;
 
 export default Results;
