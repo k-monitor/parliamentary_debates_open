@@ -42,7 +42,7 @@ const Home = props => (
         <h2>Kereső</h2>
         <DelayInput
           minLength={3}
-          delayTimeout={300}
+          delayTimeout={1000}
           element={FormControl}
           value={props.search.term}
           placeholder="Kezdjen el gépelni egy keresőkifejezést"
