@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  Row,
-  Col,
-  FormControl,
-  Card,
-  Button,
-  CardColumns,
-} from 'react-bootstrap';
+import {Row, Col, Card, Button, CardColumns} from 'react-bootstrap';
 import {navigate_to_search} from './store/modules/search';
+import {update_search_term} from './store/modules/search';
+import {update_suggestions} from './store/modules/suggestions';
 import {open_modal} from './store/modules/search';
 import {close_modal} from './store/modules/search';
 import {toggle} from './store/modules/help';
@@ -16,11 +11,11 @@ import {connect} from 'react-redux';
 import Results from './Results.js';
 import Filter from './Filter.js';
 import Help from './Help.js';
-import {DelayInput} from 'react-delay-input';
 import Datetime from 'react-datetime';
 import HomepageKeywords from './homepage_keywords.json';
 import ChartData from './ChartData.json';
 import Chart from './Chart';
+import {AsyncTypeahead} from 'react-bootstrap-typeahead';
 require('moment/locale/hu');
 
 const parseDate = string => (string ? string : string);
@@ -38,19 +33,42 @@ const Home = props => (
     <Row>
       <Col sm={props.search.term ? 3 : 12}>
         <h2>Kereső</h2>
-        <DelayInput
-          minLength={3}
-          delayTimeout={1000}
-          element={FormControl}
-          value={props.search.term}
-          placeholder="Kezdjen el gépelni egy keresőkifejezést"
-          onChange={event =>
+        <form
+          onKeyDown={e => {
+            if (e.keyCode === 13) {
+              props.navigate_to_search({
+                ...props.search,
+                term: props.search.search_term,
+              });
+            }
+          }}
+          onSubmit={event => {
             props.navigate_to_search({
               ...props.search,
-              term: event.target.value || '',
-            })
-          }
-        />
+              term: props.search.search_term,
+            });
+            event.preventDefault();
+          }}>
+          <AsyncTypeahead
+            options={props.suggestions.suggestions}
+            onSearch={term => {
+              props.update_search_term(term);
+              props.update_suggestions(term);
+            }}
+            onChange={term => {
+              props.navigate_to_search({
+                ...props.search,
+                term: term,
+              });
+            }}
+            labelKey="login"
+            placeholder="Kezdjen el gépelni"
+            searchText="Betöltés..."
+            submitFormOnEnter={true}
+            isLoading={props.suggestions.isLoading}
+            renderMenuItemChildren={option => <div key={option}>{option}</div>}
+          />
+        </form>
         <CardColumns style={{marginTop: '3em'}}>
           {!props.search.term &&
             HomepageKeywords.map(keyword => (
@@ -152,6 +170,7 @@ const Home = props => (
 
 const mapStateToProps = state => ({
   search: state.search,
+  suggestions: state.suggestions,
   help: state.help,
 });
 
@@ -162,6 +181,8 @@ const mapDispatchToProps = dispatch =>
       open_modal,
       close_modal,
       toggle,
+      update_suggestions,
+      update_search_term,
     },
     dispatch,
   );

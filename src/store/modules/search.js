@@ -3,6 +3,7 @@ import {navigate} from 'redux-url';
 import buildUrl from 'build-url';
 
 export const SEARCH_TERM = 'search/SEARCH_TERM';
+export const UPDATE_SEARCH_TERM = 'search/UPDATE_SEARCH_TERM';
 export const SEARCH_SUCCESS = 'search/SEARCH_SUCCESS';
 export const OPEN_MODAL = 'search/OPEN_MODAL';
 export const CLOSE_MODAL = 'search/CLOSE_MODAL';
@@ -11,6 +12,7 @@ export const CHANGE_TOPIC_FILTER = 'search/CHANGE_TOPIC_FILTER';
 
 const initialState = {
   loading: true,
+  search_term: '',
   term: '',
   results: {
     aggregations: {
@@ -43,6 +45,12 @@ export default (state = initialState, action) => {
         end_date: action.search.end_date,
         loading: true,
         hitOpen: null,
+      };
+
+    case UPDATE_SEARCH_TERM:
+      return {
+        ...state,
+        search_term: action.search_term,
       };
 
     case SEARCH_SUCCESS:
@@ -154,5 +162,12 @@ export const open_modal = hitOpen => dispatch => {
 export const close_modal = () => dispatch => {
   dispatch({
     type: CLOSE_MODAL,
+  });
+};
+
+export const update_search_term = search_term => dispatch => {
+  dispatch({
+    type: UPDATE_SEARCH_TERM,
+    search_term,
   });
 };

@@ -24,6 +24,7 @@ class App extends Component {
     return (
       <>
         <LoadingBar
+          onLoaderFinished={() => null}
           progress={this.props.search.loading ? 20 : 100}
           color="red"
         />
