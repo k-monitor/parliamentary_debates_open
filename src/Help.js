@@ -4,7 +4,6 @@ import {Modal, Button} from 'react-bootstrap';
 const Help = props => (
   <Modal show={props.show} onHide={props.toggle}>
     <Modal.Header closeButton>
-      <Modal.Title>Súgó</Modal.Title>
     </Modal.Header>
 
     <Modal.Body>
