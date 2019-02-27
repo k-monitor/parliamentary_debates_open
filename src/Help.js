@@ -14,15 +14,22 @@ const Help = props => (
       </p>
 
       <p>
-        A keresőmezőbe írt szó vagy szavak alapján a megjelenő találatok
-        megjelenítik az adott felszólalás szövegét, a felszólaló nevét, a
-        felszólalás címét, a dátumát, a parlament oldalán található szöveghez
-        vezető linket, és azt, hogy melyik ülésszakban hangzott el a beszéd.
+        A keresőmezőbe írt szóra vagy szavakra az enter gomb megnyomása után
+        megjelennek a találatok,amelyek tartalmazzák az adott keresőkifejezésre
+        felszólalás szövegét, a felszólaló nevét, a felszólalás címét, 
+        a dátumát, a parlament oldalán található szöveghez vezető linket, és azt,
+        hogy melyik ülésszakban hangzott el a beszéd.
+        Ahogy a kezdőoldalon található kártyák példái mutatják, komplex keresőkifejezések is
+        alkothatók az AND (és) és az OR (vagy) kötőszavakkal. Ha a több szóból álló 
+        keresőkifejezést idézőjelbe tesszük, akkor csak és kizárólag az azt a
+        kifejezést tartalmazó találatokat adja vissza az oldal.
+        A kezdőoldalra az oldal címére kattintva juthatunk vissza.
       </p>
 
       <p>A találati lista szűkíthető:</p>
       <ul>
         <li>további keresőszavak megadásával;</li>
+        <li>komplex keresőkifejezések megadásával;</li>
         <li>egy vagy több felszólaló kiválasztásával;</li>
         <li>
           dátum szerinti pontosítással az év (YYYY), a hónap (MM) és a nap (DD)
