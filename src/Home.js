@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, Button, CardColumns} from 'react-bootstrap';
+import {Row, Col, Card, Button, CardColumns, Form} from 'react-bootstrap';
 import {navigate_to_search} from './store/modules/search';
 import {update_search_term} from './store/modules/search';
 import {update_suggestions} from './store/modules/suggestions';
@@ -16,6 +16,7 @@ import HomepageKeywords from './homepage_keywords.json';
 import ChartData from './ChartData.json';
 import Chart from './Chart';
 import {AsyncTypeahead} from 'react-bootstrap-typeahead';
+import { suggestion as suggestionEnabled } from './features.json'
 require('moment/locale/hu');
 
 const parseDate = string => (string ? string : string);
@@ -49,25 +50,34 @@ const Home = props => (
             });
             event.preventDefault();
           }}>
-          <AsyncTypeahead
-            options={props.suggestions.suggestions}
-            onSearch={term => {
-              props.update_search_term(term);
-              props.update_suggestions(term);
-            }}
-            onChange={term => {
-              props.navigate_to_search({
-                ...props.search,
-                term: term,
-              });
-            }}
-            labelKey="login"
-            placeholder="Kezdjen el gépelni"
-            searchText="Betöltés..."
-            submitFormOnEnter={true}
-            isLoading={props.suggestions.isLoading}
-            renderMenuItemChildren={option => <div key={option}>{option}</div>}
-          />
+        {
+            suggestionEnabled
+            ? (<AsyncTypeahead
+                options={props.suggestions.suggestions}
+                onSearch={term => {
+                  props.update_search_term(term);
+                  props.update_suggestions(term);
+                }}
+                onChange={term => {
+                  props.navigate_to_search({
+                    ...props.search,
+                    term: term,
+                  });
+                }}
+                labelKey="login"
+                placeholder="Kezdjen el gépelni"
+                searchText="Betöltés..."
+                submitFormOnEnter={true}
+                isLoading={props.suggestions.isLoading}
+                renderMenuItemChildren={option => <div key={option}>{option}</div>}
+              />)
+            : (<Form><Form.Control
+                  value={props.search.search_term}
+                onChange={event => {
+                  props.update_search_term(event.target.value);
+                }}
+                  type="text" placeholder="Kezdjen el gépelni" /></Form>)
+        }
         </form>
         <CardColumns style={{marginTop: '3em'}}>
           {!props.search.term &&
