@@ -36,6 +36,11 @@ const Help = props => (
           megadásával, vagy a mezőbe kattintva a legördülő naptár segítségével.
         </li>
       </ul>
+<p>
+Az oldal önkéntes programozók munkájának köszönhetően jött létre.
+
+Támogasd a K-Monitort! – http://k-monitor.hu/tamogatas
+</p>
     </Modal.Body>
 
     <Modal.Footer>
