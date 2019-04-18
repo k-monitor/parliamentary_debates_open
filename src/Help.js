@@ -38,7 +38,7 @@ const Help = props => (
       </ul>
 
       <p>
-        Az oldal önkéntes programozók munkájának köszönhetően jött létre.
+        Az oldal önkéntes programozók munkájának köszönhetően jött létre. Kedvet kaptál részt venni a projektben? Ötleted, fejlesztési javaslatod van? Az oldallal kapcsolatos megjegyzéseket az info@k-monitor.hu email címre várjuk.
       </p>
 
       <p>
