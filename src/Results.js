@@ -1,10 +1,10 @@
-import React from 'react';
-import {Pagination, Modal, Button, Card} from 'react-bootstrap';
-import get_pages from './pagination';
-import config from './config.json';
-import Chart from './Chart';
+import React from "react";
+import { Pagination, Modal, Button, Card } from "react-bootstrap";
+import get_pages from "./pagination";
+import config from "./config.json";
+import Chart from "./Chart";
 
-const joinHighlightParts = parts => parts.join('&nbsp;[&hellip;]&nbsp;');
+const joinHighlightParts = parts => parts.join("&nbsp;[&hellip;]&nbsp;");
 const getHighlightPart = input =>
   joinHighlightParts(Array.isArray(input) ? input : [input]);
 
@@ -24,16 +24,16 @@ const Results = ({
   open_modal,
   close_modal,
   term,
-  isLoading,
+  isLoading
 }) =>
-  results.hits.total > 0 ? (
+  results.hits.total.value > 0 ? (
     <div>
       <h2>
-        {results.hits.total} találat &quot;{term}&quot; kulcsszóra:
+        {results.hits.total.value} találat &quot;{term}&quot; kulcsszóra:
       </h2>
       <Chart
         {...results}
-        style={{margin: 'auto', width: 600}}
+        style={{ margin: "auto", width: 600 }}
         width={600}
         height={300}
       />
@@ -46,7 +46,8 @@ const Results = ({
             onClick={e => {
               e.preventDefault();
               open_modal(index);
-            }}>
+            }}
+          >
             <Card>
               <Card.Header>
                 <a
@@ -55,11 +56,12 @@ const Results = ({
                   onClick={e => {
                     e.preventDefault();
                     open_modal(index);
-                  }}>
+                  }}
+                >
                   {result._source.speaker} &mdash;
                   <b>
                     {Array.isArray(result._source.topic)
-                      ? result._source.topic.join(', ')
+                      ? result._source.topic.join(", ")
                       : result._source.topic}
                   </b>
                 </a>
@@ -71,7 +73,7 @@ const Results = ({
                   dangerouslySetInnerHTML={{
                     __html:
                       formatHighlight(result.highlight) ||
-                      result._source.text.slice(0, 150),
+                      result._source.text.slice(0, 150)
                   }}
                 />
                 <p>
@@ -84,16 +86,17 @@ const Results = ({
       </div>
       <div>
         <Pagination>
-          {get_pages(config.page_size, results.hits.total)
+          {get_pages(config.page_size, results.hits.total.value)
             .filter(
               number =>
                 Math.min(
                   number,
                   Math.abs(number - page),
                   Math.abs(
-                    Math.ceil(results.hits.total / config.page_size) - number,
-                  ),
-                ) < 3,
+                    Math.ceil(results.hits.total.value / config.page_size) -
+                      number
+                  )
+                ) < 3
             )
             .reduce(
               (a, b) =>
@@ -101,20 +104,21 @@ const Results = ({
                   ? a.concat([b])
                   : a.slice(-1)[0] + 1 === b
                   ? a.concat([b])
-                  : a.concat(['...', b]),
-              [],
+                  : a.concat(["...", b]),
+              []
             )
             .map(number =>
-              number === '...' ? (
+              number === "..." ? (
                 <Pagination.Ellipsis key={Math.random()} />
               ) : (
                 <Pagination.Item
                   key={number}
                   active={number * 1 === page * 1}
-                  onClick={() => navigate_to_page(number)}>
+                  onClick={() => navigate_to_page(number)}
+                >
                   {number + 1}
                 </Pagination.Item>
-              ),
+              )
             )}
         </Pagination>
       </div>
@@ -127,7 +131,7 @@ const Results = ({
                 {results.hits.hits[hitOpen]._source.speaker} &mdash;
                 <b>
                   {Array.isArray(results.hits.hits[hitOpen]._source.topic)
-                    ? results.hits.hits[hitOpen]._source.topic.join(', ')
+                    ? results.hits.hits[hitOpen]._source.topic.join(", ")
                     : results.hits.hits[hitOpen]._source.topic}
                 </b>
               </Modal.Title>
@@ -136,12 +140,12 @@ const Results = ({
             <Modal.Body>
               <p>
                 {results.hits.hits[hitOpen]._source.date}, (
-                {results.hits.hits[hitOpen]._source.session},{' '}
+                {results.hits.hits[hitOpen]._source.session},{" "}
                 {results.hits.hits[hitOpen]._source.sitting_type})
               </p>
               <p>{results.hits.hits[hitOpen]._source.text}</p>
               <p className="source">
-                Forrás:{' '}
+                Forrás:{" "}
                 <a href={results.hits.hits[hitOpen]._source.url}>
                   {results.hits.hits[hitOpen]._source.url}
                 </a>
@@ -159,7 +163,7 @@ const Results = ({
     </div>
   ) : term && !isLoading ? (
     <div>
-      <h2>Nincs találat &quot;{term}&quot; kulcsszóra &#9785;</h2>{' '}
+      <h2>Nincs találat &quot;{term}&quot; kulcsszóra &#9785;</h2>{" "}
     </div>
   ) : null;
 
