@@ -134,7 +134,7 @@ export const update_search = search => {
           size: config.page_size,
           from: start,
           ...(search.speaker_filter
-            ? { "filter.speaker": search.speaker_filter }
+            ? { "filter.speakers": [search.speaker_filter] }
             : {}),
           ...(search.date_filter ? { "filter.date": search.date_filter } : {}),
           ...(search.start_date
