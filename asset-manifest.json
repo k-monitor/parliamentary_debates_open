@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/parliamentary_debates_open/static/css/main.16f50902.chunk.css",
+    "main.js": "/parliamentary_debates_open/static/js/main.82736c11.chunk.js",
+    "main.js.map": "/parliamentary_debates_open/static/js/main.82736c11.chunk.js.map",
+    "runtime-main.js": "/parliamentary_debates_open/static/js/runtime-main.e5011e2d.js",
+    "runtime-main.js.map": "/parliamentary_debates_open/static/js/runtime-main.e5011e2d.js.map",
+    "static/css/2.8a06d3cc.chunk.css": "/parliamentary_debates_open/static/css/2.8a06d3cc.chunk.css",
+    "static/js/2.9cb40007.chunk.js": "/parliamentary_debates_open/static/js/2.9cb40007.chunk.js",
+    "static/js/2.9cb40007.chunk.js.map": "/parliamentary_debates_open/static/js/2.9cb40007.chunk.js.map",
+    "index.html": "/parliamentary_debates_open/index.html",
+    "precache-manifest.a90d3e6aa0030ec2a2b308e151b5c3b1.js": "/parliamentary_debates_open/precache-manifest.a90d3e6aa0030ec2a2b308e151b5c3b1.js",
+    "service-worker.js": "/parliamentary_debates_open/service-worker.js",
+    "static/css/2.8a06d3cc.chunk.css.map": "/parliamentary_debates_open/static/css/2.8a06d3cc.chunk.css.map",
+    "static/css/main.16f50902.chunk.css.map": "/parliamentary_debates_open/static/css/main.16f50902.chunk.css.map",
+    "static/media/logo.jpg": "/parliamentary_debates_open/static/media/logo.c449bb8f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5011e2d.js",
+    "static/css/2.8a06d3cc.chunk.css",
+    "static/js/2.9cb40007.chunk.js",
+    "static/css/main.16f50902.chunk.css",
+    "static/js/main.82736c11.chunk.js"
+  ]
+}
