@@ -2,7 +2,7 @@
   "name": "parldata_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://k-monitor.github.io/parliamentary_debates_open/",
+  "homepage": "https://parlament.k-monitor.hu/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
