@@ -18,6 +18,7 @@ Do you have experience in the listed technologies, you have free time and would 
 nvm install 16  # Obtain node 16
 nvm use 16  # Activate node 16
 yarn install # Install dependencies
+yarn fetchChartData  # Fetch static chart data from the server
 ```
 
 
