@@ -36,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
+    "deploy": "echo parlament.k-monitor.hu > ./build/CNAME && gh-pages -d build",
     "eslint": "eslint src",
     "fetchChartData": "scripts/fetchChartData.sh"
   },
