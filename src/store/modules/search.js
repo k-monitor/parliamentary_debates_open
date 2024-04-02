@@ -191,7 +191,6 @@ export const update_search_all = (search) => {
           ...(search.speaker_filter
             ? { "filter.speakers": [search.speaker_filter] }
             : {}),
-          //
           ...(search.type_filter
             ? { "filter.types": [search.type_filter] }
             : {}),
