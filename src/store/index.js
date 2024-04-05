@@ -11,7 +11,6 @@ export const history = createHistory();
 const routes = {
   "/parliamentary_debates_open/": (_, query) => update_search(query), // you can also pass a function to transform the action, the matched params, query and the original path will be passed in
   "/parliamentary_debates_open": (_, query) => update_search(query), // you can also pass a function to transform the action, the matched params, query and the original path will be passed in
-  "/parliamentary_debates_open/export": (_, query) => update_search_all(query), // you can also pass a function to transform the action, the matched params, query and the original path will be passed in
   "*": "NOT_FOUND",
 };
 

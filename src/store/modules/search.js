@@ -144,7 +144,6 @@ export const update_search = (search) => {
           ...(search.speaker_filter
             ? { "filter.speakers": [search.speaker_filter] }
             : {}),
-          //
           ...(search.type_filter
             ? { "filter.types": [search.type_filter] }
             : {}),
@@ -161,55 +160,6 @@ export const update_search = (search) => {
     })
       .then((response) => response.json())
       .then((results) => {
-        console.log("results:", results);
-        console.log("speaker filter:", search.speaker_filter);
-        console.log("type filter:", search.type_filter);
-        dispatch({ type: SEARCH_SUCCESS, page, results });
-      });
-  };
-};
-export const update_search_all = (search) => {
-  return (dispatch) => {
-    const page = search.page || 0;
-    dispatch({
-      type: SEARCH_TERM,
-      search,
-    });
-
-    const start = page * config.page_size;
-
-    const url = `${config.SEARCH_API}`;
-
-    return fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        id: config.QUERY_NAME,
-        params: {
-          q: search.term,
-          size: 1000,
-          from: start,
-          ...(search.speaker_filter
-            ? { "filter.speakers": [search.speaker_filter] }
-            : {}),
-          ...(search.type_filter
-            ? { "filter.types": [search.type_filter] }
-            : {}),
-          ...(search.date_filter ? { "filter.date": search.date_filter } : {}),
-          ...(search.start_date
-            ? { "filter.date.from": search.start_date }
-            : { "filter.date.from": "1900.01.01." }),
-          ...(search.end_date
-            ? { "filter.date.to": search.end_date }
-            : { "filter.date.to": "2500.01.01." }),
-        },
-      }),
-      headers: { "content-type": "application/json" },
-    })
-      .then((response) => response.json())
-      .then((results) => {
-        console.log("results:", results);
-        console.log("speaker filter:", search.speaker_filter);
-        console.log("type filter:", search.type_filter);
         dispatch({ type: SEARCH_SUCCESS, page, results });
       });
   };
