@@ -30,8 +30,6 @@ const formatDateValue = (value) => {
 };
 
 const Home = (props) => {
-  console.log("search:", props.search);
-
   return (
     <>
       <Row>

@@ -76,7 +76,15 @@ function ExportCSV({ results }) {
     }
   };
 
-  return <Button onClick={handleExportCSV}>Találatok Exportálása (CSV)</Button>;
+  return (
+    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+      <Button onClick={handleExportCSV}>Találatok Exportálása (CSV)</Button>
+      <p style={{ fontSize: "14px", margin: "0" }}>
+        A rendszer jelenleg 1000 sort képes exportálni. Használj szűrőt a
+        találatok csökkentésére!
+      </p>
+    </div>
+  );
 }
 
 export default ExportCSV;

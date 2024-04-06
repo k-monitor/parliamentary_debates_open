@@ -10,8 +10,6 @@ const Filter = ({
   getLabel = (item) => item.key,
   getValue = (item) => item.key,
 }) => {
-  console.log("counts:", counts);
-
   return (
     <ul className="filter">
       <li key="">
