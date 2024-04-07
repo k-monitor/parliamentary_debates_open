@@ -77,7 +77,14 @@ function ExportCSV({ results }) {
   };
 
   return (
-    <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "20px",
+        alignItems: "center",
+        marginBottom: "10px",
+      }}
+    >
       <Button onClick={handleExportCSV}>Találatok Exportálása (CSV)</Button>
       <p style={{ fontSize: "14px", margin: "0" }}>
         A rendszer jelenleg 1000 sort képes exportálni. Használj szűrőt a

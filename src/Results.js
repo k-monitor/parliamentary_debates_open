@@ -154,8 +154,17 @@ class Results extends React.Component {
                 </p>
                 <p>{results.hits.hits[hitOpen]._source.text}</p>
                 <p className="source">
-                  Forrás:{" "}
-                  <a href={results.hits.hits[hitOpen]._source.url}>
+                  Forrás:
+                  <a
+                    href={results.hits.hits[hitOpen]._source.url}
+                    style={{
+                      display: "inline-block",
+                      width: "100%",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {results.hits.hits[hitOpen]._source.url}
                   </a>
                 </p>
