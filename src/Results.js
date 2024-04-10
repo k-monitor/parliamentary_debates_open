@@ -34,8 +34,15 @@ class Results extends React.Component {
   };
 
   render() {
-    const { results, page, navigate_to_page, term, isLoading, filterType } =
-      this.props;
+    const {
+      search,
+      results,
+      page,
+      navigate_to_page,
+      term,
+      isLoading,
+      filterType,
+    } = this.props;
 
     const { hitOpen } = this.state;
 
@@ -90,7 +97,7 @@ class Results extends React.Component {
           width={600}
           height={300}
         />
-        <ExportCSV results={results} />
+        <ExportCSV search={search} />
 
         <div className="CardList">{renderedElements}</div>
         <div>

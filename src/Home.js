@@ -195,6 +195,7 @@ const Home = (props) => {
             term={props.search.term}
             isLoading={props.search.loading}
             filterType={props.search.type_filter}
+            search={props.search}
           />
         </Col>
       </Row>

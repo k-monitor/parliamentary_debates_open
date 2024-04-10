@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import jsonexport from "jsonexport";
-import config from "./config.json";
+import { fetchData } from "./store/modules/search";
 
 class ExportCSV extends React.Component {
   constructor(props) {
@@ -16,41 +16,14 @@ class ExportCSV extends React.Component {
 
     const queryParams = new URLSearchParams(window.location.search);
     const term = queryParams.get("term");
-    const speakerFilter = queryParams.get("speaker_filter");
-    const typeFilter = queryParams.get("type_filter");
-    const dateFilter = queryParams.get("date_filter");
-    const startDate = queryParams.get("start_date");
-    const endDate = queryParams.get("end_date");
+
+    const search = this.props.search;
+    const totalValue = this.props.search.results.hits.total.value;
 
     const csvData = [];
 
-    const page = 0;
-    const start = page * config.page_size;
-
-    const requestBody = {
-      id: config.QUERY_NAME,
-      params: {
-        q: term,
-        size: this.props.results.hits.total.value,
-        from: start,
-        ...(speakerFilter ? { "filter.speakers": [speakerFilter] } : {}),
-        ...(typeFilter ? { "filter.types": [typeFilter] } : {}),
-        ...(dateFilter ? { "filter.date": dateFilter } : {}),
-        ...(startDate
-          ? { "filter.date.from": startDate }
-          : { "filter.date.from": "1900.01.01." }),
-        ...(endDate
-          ? { "filter.date.to": endDate }
-          : { "filter.date.to": "2500.01.01." }),
-      },
-    };
-
     try {
-      const response = await fetch(config.SEARCH_API, {
-        method: "POST",
-        body: JSON.stringify(requestBody),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetchData(search, totalValue);
 
       if (!response.ok) {
         throw new Error("Failed to fetch search results.");

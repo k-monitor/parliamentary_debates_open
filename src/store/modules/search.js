@@ -121,6 +121,36 @@ export const navigate_to_search = (search, n) => {
   };
 };
 
+export function fetchData(search, size) {
+  const page = search.page || 0;
+  const start = page * config.page_size;
+  const url = `${config.SEARCH_API}`;
+
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify({
+      id: config.QUERY_NAME,
+      params: {
+        q: search.term,
+        size,
+        from: start,
+        ...(search.speaker_filter
+          ? { "filter.speakers": [search.speaker_filter] }
+          : {}),
+        ...(search.type_filter ? { "filter.types": [search.type_filter] } : {}),
+        ...(search.date_filter ? { "filter.date": search.date_filter } : {}),
+        ...(search.start_date
+          ? { "filter.date.from": search.start_date }
+          : { "filter.date.from": "1900.01.01." }),
+        ...(search.end_date
+          ? { "filter.date.to": search.end_date }
+          : { "filter.date.to": "2500.01.01." }),
+      },
+    }),
+    headers: { "content-type": "application/json" },
+  });
+}
+
 export const update_search = (search) => {
   return (dispatch) => {
     const page = search.page || 0;
@@ -129,35 +159,7 @@ export const update_search = (search) => {
       search,
     });
 
-    const start = page * config.page_size;
-
-    const url = `${config.SEARCH_API}`;
-
-    return fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        id: config.QUERY_NAME,
-        params: {
-          q: search.term,
-          size: config.page_size,
-          from: start,
-          ...(search.speaker_filter
-            ? { "filter.speakers": [search.speaker_filter] }
-            : {}),
-          ...(search.type_filter
-            ? { "filter.types": [search.type_filter] }
-            : {}),
-          ...(search.date_filter ? { "filter.date": search.date_filter } : {}),
-          ...(search.start_date
-            ? { "filter.date.from": search.start_date }
-            : { "filter.date.from": "1900.01.01." }),
-          ...(search.end_date
-            ? { "filter.date.to": search.end_date }
-            : { "filter.date.to": "2500.01.01." }),
-        },
-      }),
-      headers: { "content-type": "application/json" },
-    })
+    return fetchData(search, config.page_size)
       .then((response) => response.json())
       .then((results) => {
         dispatch({ type: SEARCH_SUCCESS, page, results });
