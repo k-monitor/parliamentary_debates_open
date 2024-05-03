@@ -1,5 +1,5 @@
 {
-    "SEARCH_API": "https://parldata-search-proxy.westeurope.cloudapp.azure.com/parldata/_search/template",
-    "QUERY_NAME": "filtered_query_v4",
-    "page_size": 20
+  "SEARCH_API": "https://parldata-search-proxy.westeurope.cloudapp.azure.com/parldata/_search/template",
+  "QUERY_NAME": "filtered_query_v5",
+  "page_size": 20
 }
