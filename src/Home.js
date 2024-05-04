@@ -87,7 +87,9 @@ const Home = (props) => {
               </Form>
             )}
           </form>
-          <CardColumns style={{ marginTop: "3em" }}>
+          <CardColumns
+            style={{ marginTop: "3em", display: "flex", flexWrap: "wrap" }}
+          >
             {!props.search.term &&
               HomepageKeywords.map((keyword) => (
                 <a
