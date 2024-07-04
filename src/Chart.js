@@ -3,12 +3,13 @@ import {
   result_count_by_date,
   bin,
   formatBinName,
-  formatBinNameShort,
   formatBinNameMini,
 } from './transformations';
 import {AreaChart, Area, XAxis, YAxis, Tooltip} from 'recharts';
 
-const binsize = 5184000000 * 3;
+//const binsize = 5184000000 * 3;
+const dayInMs = 1000 * 60 * 60 * 24;
+const binsize = dayInMs * 30
 
 const Chart = props => (
   <div style={props.style}>
@@ -38,14 +39,14 @@ const Chart = props => (
         tick={{fill: '#ebebeb'}}
         type="number"
         dataKey="timestamp"
-        angle={props.mini ? 0 : -45}
+        angle={props.mini ? 0 : -60}
         textAnchor="end"
         domain={['dataMin', 'dataMax']}
-        minTickGap={props.mini ? 10 : -35}
+        minTickGap={props.mini ? 10 : -15}
         tickCount={100}
         ticks={bin(binsize)(result_count_by_date(props)).map(i => i.timestamp)}
         tickFormatter={
-          props.mini ? formatBinNameMini(binsize) : formatBinNameShort(binsize)
+          formatBinNameMini(binsize) 
         }
       />
       {!props.mini && <YAxis tick={{fill: '#ebebeb'}} />}
