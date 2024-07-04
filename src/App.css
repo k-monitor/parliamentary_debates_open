@@ -37,7 +37,9 @@ em {
 .navbar-brand {
   color: rgb(235, 235, 235) !important;
 }
-
+.CardList{
+  width:1000px;
+}
 .CardList .card {
   margin-bottom: 3em;
 }

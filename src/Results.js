@@ -93,8 +93,8 @@ class Results extends React.Component {
         </h2>
         <Chart
           {...results}
-          style={{ margin: "auto", width: 600 }}
-          width={600}
+          style={{ margin: "auto", width: 1000 }}
+          width={1000}
           height={300}
         />
         <ExportCSV search={search} />
