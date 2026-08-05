@@ -7,6 +7,8 @@ Welcome to the Parliamentary Debates Open's frontend github repo. We are a bunch
 
 If you are interested in an analysis we have made earlier, check out [this blog post in English](http://k.blog.hu/2017/12/05/the_language_of_the_hungarian_parliament_1990) or [this site in Hungarian.](http://k-monitor.github.io/) If you want to have a look at the raw data we downloaded for the sake of this project from parlament.hu click [here.](http://opendata.hu/dataset/parldata)
 
+The backend associated with this project is available from K-Monitor upon request. If you need access to it, please contact us at info@k-monitor.hu.
+
 Do you have experience in the listed technologies, you have free time and would you like to contribute? Contact us here on Github!
 
 
