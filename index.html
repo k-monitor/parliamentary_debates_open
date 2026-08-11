@@ -1,1 +1,123 @@
-<!doctype html><html lang="en"><head><script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-5M9VS7T",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer")</script><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/><meta name="theme-color" content="#000000"/><link rel="manifest" href="/manifest.json"/><link rel="shortcut icon" href="/favicon.ico"/><title>A magyar országgyűlés felszólalásai 1990 óta</title><link href="/static/css/2.5c7438d8.chunk.css" rel="stylesheet"><link href="/static/css/main.63245cf7.chunk.css" rel="stylesheet"></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M9VS7T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(f){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],a=0,l=[];a<n.length;a++)t=n[a],Object.prototype.hasOwnProperty.call(i,t)&&i[t]&&l.push(i[t][0]),i[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(f[r]=o[r]);for(s&&s(e);l.length;)l.shift()();return c.push.apply(c,u||[]),p()}function p(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==i[u]&&(n=!1)}n&&(c.splice(r--,1),e=a(a.s=t[0]))}return e}var t={},i={1:0},c=[];function a(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return f[e].call(r.exports,r,r.exports,a),r.l=!0,r.exports}a.m=f,a.c=t,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(r,e){if(1&e&&(r=a(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)a.d(t,n,function(e){return r[e]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="/";var r=this.webpackJsonpparldata_frontend=this.webpackJsonpparldata_frontend||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;p()}([])</script><script src="/static/js/2.b3a0c0bd.chunk.js"></script><script src="/static/js/main.2f67462c.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Az oldal elköltözött – Parlamonitor</title>
+    <link rel="canonical" href="https://parlamonitor.k-monitor.hu/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script>
+      (function () {
+        var NEW_SITE = "https://parlamonitor.k-monitor.hu/";
+
+        // The retired app kept its search state in the query string, e.g.
+        // /parliamentary_debates_open?term=korrupció. Carry the search term
+        // over to the new site's search page; the old speaker/type/date
+        // filters have no known equivalent there, so they are dropped.
+        function queryParam(name) {
+          var match = new RegExp("[?&]" + name + "=([^&]*)").exec(
+            window.location.search
+          );
+          return match ? decodeURIComponent(match[1].replace(/\+/g, " ")) : "";
+        }
+
+        function target() {
+          var term = queryParam("term");
+          if (!term) return NEW_SITE;
+          return (
+            NEW_SITE + "search?q=" + encodeURIComponent(term) + "&cycle=all"
+          );
+        }
+
+        // Best-effort cleanup of the service worker the retired app installed;
+        // service-worker.js finishes the job for clients it still controls.
+        if ("serviceWorker" in navigator && navigator.serviceWorker.getRegistrations) {
+          navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            registrations.forEach(function (registration) {
+              registration.unregister();
+            });
+          });
+        }
+        if (window.caches && caches.keys) {
+          caches.keys().then(function (keys) {
+            keys.forEach(function (key) {
+              caches.delete(key);
+            });
+          });
+        }
+
+        var url = target();
+        document.addEventListener("DOMContentLoaded", function () {
+          var links = document.getElementsByClassName("target-link");
+          for (var i = 0; i < links.length; i++) links[i].href = url;
+        });
+        window.location.replace(url);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://parlamonitor.k-monitor.hu/" />
+    </noscript>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #f7f7f7;
+      }
+      main {
+        max-width: 34rem;
+        text-align: center;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin: 0 0 1rem;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+      .en {
+        color: #555;
+        font-size: 0.95rem;
+      }
+      a {
+        color: #0b5ed7;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #f0f0f0;
+          background: #1b1b1b;
+        }
+        .en {
+          color: #b0b0b0;
+        }
+        a {
+          color: #7eb3ff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Az oldal új helyre költözött</h1>
+      <p>
+        Az Országgyűlés felszólalásainak keresője mostantól itt érhető el:
+        <a class="target-link" href="https://parlamonitor.k-monitor.hu/"
+          >parlamonitor.k-monitor.hu</a
+        >
+      </p>
+      <p class="en">
+        This site has moved to
+        <a class="target-link" href="https://parlamonitor.k-monitor.hu/"
+          >parlamonitor.k-monitor.hu</a
+        >. You should be redirected automatically.
+      </p>
+    </main>
+  </body>
+</html>

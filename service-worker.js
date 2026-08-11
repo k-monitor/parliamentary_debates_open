@@ -1,39 +1,45 @@
-/**
- * Welcome to your Workbox-powered service worker!
+/* Kill switch for the service worker the retired app registered.
  *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
+ * The old app used a Workbox precache service worker, so browsers that visited
+ * parlament.k-monitor.hu before the shutdown would keep serving the cached app
+ * shell and never see the redirect. This replacement takes over, drops every
+ * cache, unregisters itself and reloads open tabs so they hit the network (and
+ * therefore the redirect page). It must stay at /service-worker.js — that is
+ * the URL the old registration polls for updates.
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-
-importScripts(
-  "/precache-manifest.961a6df55c249561ae48e490addd65c8.js"
-);
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+self.addEventListener("install", function () {
+  self.skipWaiting();
 });
 
-workbox.core.clientsClaim();
+self.addEventListener("activate", function (event) {
+  event.waitUntil(
+    caches
+      .keys()
+      .then(function (keys) {
+        return Promise.all(
+          keys.map(function (key) {
+            return caches.delete(key);
+          })
+        );
+      })
+      .then(function () {
+        return self.registration.unregister();
+      })
+      .then(function () {
+        return self.clients.matchAll({ type: "window" });
+      })
+      .then(function (clients) {
+        clients.forEach(function (client) {
+          if (client.navigate) {
+            client.navigate(client.url);
+          }
+        });
+      })
+  );
+});
 
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"), {
-  
-  blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
+// Never serve anything from cache while this worker is still in control.
+self.addEventListener("fetch", function (event) {
+  event.respondWith(fetch(event.request));
 });
