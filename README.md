@@ -1,4 +1,11 @@
 # parldata_frontend
+
+> **This site has moved to [parlamonitor.k-monitor.hu](https://parlamonitor.k-monitor.hu/).**
+> parlament.k-monitor.hu now only serves a redirect to the new site; searches are
+> carried over, e.g. `/parliamentary_debates_open?term=korrupció` lands on
+> `/search?q=korrupció&cycle=all`. The React app below is no longer deployed — its
+> source is kept here for reference.
+
 This repository is for the frontend development of the parldata project.
 
 Welcome to the Parliamentary Debates Open's frontend github repo. We are a bunch of people working on making Hungarian parliamentary speeches open. We are happy to see you here.
@@ -10,6 +17,18 @@ If you are interested in an analysis we have made earlier, check out [this blog 
 The backend associated with this project is available from K-Monitor upon request. If you need access to it, please contact us at info@k-monitor.hu.
 
 Do you have experience in the listed technologies, you have free time and would you like to contribute? Contact us here on Github!
+
+
+## Deploying the redirect
+
+```bash
+yarn build   # copies public/ into build/, adding 404.html for the old app's paths
+yarn deploy  # builds and pushes build/ to the gh-pages branch
+```
+
+`public/` is the whole live site now: `index.html` (redirect + search-term mapping),
+`service-worker.js` (unregisters the service worker the old app installed, so
+returning visitors are not stuck on the cached app) and `CNAME`.
 
 
 ## Development

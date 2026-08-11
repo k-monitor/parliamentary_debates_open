@@ -35,10 +35,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "scripts/buildRedirect.sh",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "echo parlament.k-monitor.hu > ./build/CNAME && gh-pages -d build",
+    "deploy": "scripts/buildRedirect.sh && gh-pages -d build",
     "eslint": "eslint src",
     "fetchChartData": "scripts/fetchChartData.sh"
   },
